@@ -70,18 +70,18 @@ import TabItem from '@theme/TabItem';
 | ---------------------- | ----------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `subaccount`           | Required    | SubaccountInfo   | The subaccount the order is on behalf of                                                                                      |
 | `marketId`             | Required    | string           | The id of the market the order is intended for                                                                                |
-| `type`                 | Required    | OrderType        | The type of the order ([order type options](https://google.com))                                                              |
+| `type`                 | Required    | OrderType        | The type of the order ([order type options](../types/orders.md))                                                              |
 | `side`                 | Required    | OrderSize        | The side of the order (`BUY` or `SELL`)                                                                                       |
 | `price`                | Required    | number           | The price the order should be executed at                                                                                     |
 | `size`                 | Required    | number           | The size of tokens in the quote asset                                                                                         |
 | `clientId`             | Required    | number           | Set to a number, can be used by the client to identify the order                                                              |
-| `timeInForce`          | Optional    | OrderTimeInForce | Indicates how long an order will remain active before it is executed or expires ([time in force options](https://google.com)) |
+| `timeInForce`          | Optional    | OrderTimeInForce | Indicates how long an order will remain active before it is executed or expires ([time in force options](../types/orders.md)) |
 | `goodTilTimeInSeconds` | Optional    | number           | Number of seconds before the order is expired                                                                                 |
-| `execution`            | Optional    | OrderExecution   | The type of order execution ([order execution options](https://google.com))                                                   |
+| `execution`            | Optional    | OrderExecution   | The type of order execution ([order execution options](../types/orders.md))                                                   |
 | `postOnly`             | Optional    | boolean          | Is the order a post-only order                                                                                                |
 | `reduceOnly`           | Optional    | boolean          | Is the order a reduce-only order                                                                                              |
 | `triggerPrice`         | Optional    | number           | The price an order is placed on the orderbook if it is conditional                                                            |
-| `goodTilBlock`         | Optional    | number           | The block that the order is valid until ([read more here](https://google.com))                                                |
+| `goodTilBlock`         | Optional    | number           | The block that the order is valid until ([read more here](../types/orders.md))                                                |
 
  </TabItem>
   <TabItem value="MarketBuy" label="Market Order">
@@ -90,14 +90,14 @@ import TabItem from '@theme/TabItem';
 | ---------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `subaccount`           | SubaccountInfo   | The subaccount the order is on behalf of                                                                                      |
 | `marketId`             | string           | The id of the market the order is intended for                                                                                |
-| `type`                 | OrderType        | The type of the order ([order type options](https://google.com))                                                              |
+| `type`                 | OrderType        | The type of the order ([order type options](../types/orders.md))                                                              |
 | `side`                 | OrderSize        | The side of the order (`BUY` or `SELL`)                                                                                       |
 | `price`                | number           | The price the order should be executed at                                                                                     |
 | `size`                 | number           | The size of tokens in the quote asset                                                                                         |
 | `clientId`             | number           | Set to a number, can be used by the client to identify the order                                                              |
-| `timeInForce`          | OrderTimeInForce | Indicates how long an order will remain active before it is executed or expires ([time in force options](https://google.com)) |
-| `execution`            | OrderExecution   | The type of order execution ([order execution options](https://google.com))                                                   |
-| `goodTilBlock`         | number           | The block that the order is valid until ([read more here](https://google.com))                                                |
+| `timeInForce`          | OrderTimeInForce | Indicates how long an order will remain active before it is executed or expires ([time in force options](../types/orders.md)) |
+| `execution`            | OrderExecution   | The type of order execution ([order execution options](../types/orders.md))                                                   |
+| `goodTilBlock`         | number           | The block that the order is valid until ([read more here](../types/orders.md))                                                |
 
   </TabItem>
 </Tabs>
