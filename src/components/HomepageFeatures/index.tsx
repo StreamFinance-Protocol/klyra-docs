@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "One Line Initialization",
-    Svg: require("@site/static/img/default-feature.svg").default,
+    Svg: require("@site/static/img/simple-icon.svg").default,
     description: (
       <>
         KlyraSDK was designed from the ground up to be easily installed and used
@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Focus on What Matters",
-    Svg: require("@site/static/img/default-feature.svg").default,
+    Svg: require("@site/static/img/users-icon.svg").default,
     description: (
       <>
         KlyraSDK lets you focus on your users, and we&apos;ll handle the
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Maximize Customization",
-    Svg: require("@site/static/img/default-feature.svg").default,
+    Svg: require("@site/static/img/modular-icon.svg").default,
     description: (
       <>
         Extend or customize KlyraSDK to fulfill the needs for your exchange.

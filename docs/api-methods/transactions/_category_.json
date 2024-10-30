@@ -1,0 +1,8 @@
+{
+  "label": "Transactions",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "The transaction methods of the KlyraSDK"
+  }
+}

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Learn how to connect to **Klyra in less than 5 minutes**.
+Learn how to connect to **Klyra**
 
 ## Getting Started
 
@@ -49,6 +49,7 @@ import { Klyra } from "@klyra/core";
 
 const klyra = new Klyra({
   environment: "testnet",
+  withCortexForms: false,
   websocket: {
     subscribeOnConnect: [],
   },

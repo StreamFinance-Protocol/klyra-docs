@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
+description: Fetch data from Klyra
 ---
 
-# Getters
+# Queries
 
-Getter methods are serviced through Cortex. It will retrieve the processed data from it's store
+Query methods are serviced through Cortex. It will retrieve the processed data from it's store
 and return the formatted data.
 
 ## Assets

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Explore the high-level architecture
 ---
 
 # Structure
