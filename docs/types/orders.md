@@ -47,6 +47,94 @@ enum OrderTimeInForce {
 }
 ```
 
+## Indexer Subaccount Perpetual Position
+Specifies relevant data to a subaccount's perpetual position
+```typescript
+interface IndexerSubaccountPerpetualPositionSubscribed {
+  market: string;
+  status: IndexerPerpetualPositionStatus;
+  side: IndexerPositionSide;
+  size: string;
+  maxSize: string;
+  entryPrice: string;
+  realizedPnl: string;
+  createdAt: string;
+  createdAtHeight: string;
+  sumOpen: string;
+  sumClose: string;
+  netFunding: string;
+  unrealizedPnl: string;
+  closedAt?: string | null;
+  exitPrice?: string | null;
+  subaccountNumber: number;
+}
+```
+
+## Indexer Perpetual Position Status
+Specifies the status of a perpetual position
+```typescript
+enum IndexerPerpetualPositionStatus {
+  OPEN = "OPEN",
+  CLOSED = "CLOSED",
+  LIQUIDATED = "LIQUIDATED",
+}
+```
+
+## Indexer Perpetual Position Side
+Specifies the side of the market a perpetual positions is on 
+```typescript
+ enum IndexerPositionSide {
+  LONG = "LONG",
+  SHORT = "SHORT",
+}
+```
+
+## Indexer Subaccount Asset Position
+Specifies an asset holding of a subaccount
+```typescript
+interface IndexerSubaccountAssetPosition {
+  address?: string;
+  positionId?: string;
+  subaccountNumber: number;
+  assetId: string;
+  symbol: string;
+  side: IndexerPositionSide;
+  size: string;
+}
+```
+
+## Indexer Liquidity
+Specifies if a fill for the order is a maker or taker
+```typescript
+enum IndexerLiquidity {
+  TAKER = "TAKER",
+  MAKER = "MAKER",
+}
+```
+
+## Indexer Transfer Type
+Specifies what ype of transfer was made
+```typescript
+enum IndexerTransferType {
+  TRANSFER_IN = "TRANSFER_IN",
+  TRANSFER_OUT = "TRANSFER_OUT",
+  DEPOSIT = "DEPOSIT",
+  WITHDRAWAL = "WITHDRAWAL",
+}
+```
+
+## Indexer Fill Type
+Specifies what type of fill an order is
+```typescript
+enum IndexerFillType {
+  LIMIT = "LIMIT",
+  LIQUIDATED = "LIQUIDATED",
+  LIQUIDATION = "LIQUIDATION",
+  DELEVERAGED = "DELEVERAGED",
+  OFFSETTING = "OFFSETTING",
+}
+```
+
 ## Order Execution
 Specifies how the order should be executed
 - **DEFAULT**: for conditional orders, setting to default indicates the triggered order should be handled as a regular limit order
@@ -83,6 +171,7 @@ interface BroadcastTxAsyncResponse {
     readonly hash: Uint8Array;
 }
 ```
+
 
 
 
