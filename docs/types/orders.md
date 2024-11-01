@@ -164,14 +164,4 @@ export interface MarketInfo {
   subticksPerTick: number;
 }
 ```
-## Broadcast Tx Asynchronous Response 
-The response received after submitting a succesful order
-``` typescript
-interface BroadcastTxAsyncResponse {
-    readonly hash: Uint8Array;
-}
-```
-
-
-
 
