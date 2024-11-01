@@ -33,25 +33,6 @@ import TabItem from '@theme/TabItem';
   ```
 
   </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
-  ```
-
-  </TabItem>
 </Tabs>
 
 <br />
@@ -85,25 +66,6 @@ A cancel market order will attempt to cancel an existing maker order on the orde
     clientId
     goodTilTime
   );
-  ```
-
-  </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
   ```
 
   </TabItem>
@@ -141,25 +103,6 @@ A cancel limit order will attempt to cancel an existing maker order on the order
     clientId
     goodTilTime
   );
-  ```
-
-  </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
   ```
 
   </TabItem>

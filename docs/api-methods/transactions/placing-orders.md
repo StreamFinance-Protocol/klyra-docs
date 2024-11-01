@@ -35,25 +35,7 @@ import TabItem from '@theme/TabItem';
   ```
 
   </TabItem>
-  <TabItem value="curl" label="cURL">
 
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
-  ```
-
-  </TabItem>
 </Tabs>
 
 <br />
@@ -107,25 +89,6 @@ A market order will attempt to be matched on the orderbook starting at the best 
   ```
 
   </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
-  ```
-
-  </TabItem>
 </Tabs>
 
 <br />
@@ -173,25 +136,6 @@ as a maker order at that price.
     goodTilBlockTime,
     reduceOnly,
   );
-  ```
-
-  </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
   ```
 
   </TabItem>
@@ -249,25 +193,6 @@ A stop loss market order will place a stop loss order when the markets price hit
   ```
 
   </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
-  ```
-
-  </TabItem>
 </Tabs>
 
 <br />
@@ -315,25 +240,6 @@ A stop loss limit order will place a stop loss order when the markets price hits
     goodTilBlockTime,
     reduceOnly,
   );
-  ```
-
-  </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
   ```
 
   </TabItem>

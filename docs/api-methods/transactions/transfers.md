@@ -32,25 +32,6 @@ import TabItem from '@theme/TabItem';
   ```
 
   </TabItem>
-  <TabItem value="curl" label="cURL">
-
-  ```bash
-  curl -X POST https://klyra-node-1.com/placeOrder \
-    -H "Content-Type: application/json" \
-    -d '{
-      "subaccount": "0",
-      "clientId": 123,
-      "clobPairId": 0,
-      "side": "SIDE_BUY",
-      "quantums": 1000000000,
-      "subticks": 1000000000,
-      "timeInForce": "TIME_IN_FORCE_UNSPECIFIED",
-      "orderFlags": "SHORT_TERM",
-      "reduceOnly": false
-    }'
-  ```
-
-  </TabItem>
 </Tabs>
 
 
