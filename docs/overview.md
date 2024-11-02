@@ -42,6 +42,7 @@ This will install the KlyraSDK, allowing you to interact with the Klyra protocol
 :::
 
 ## Initialize KlyraSDK
+Run this in the entry point of your project to create and initialize and instance of the KlyraSDK
 ```typescript
 import { Klyra } from "@klyra/core";
 
@@ -49,13 +50,12 @@ import { Klyra } from "@klyra/core";
 
 const klyra = new Klyra({
   environment: "testnet",
-  withCortexForms: false,
-  websocket: {
-    subscribeOnConnect: [],
-  },
+  fees: {
+    feePpm: 1000
+    address: "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+    subaccountNumber: 0
+  }
 });
 
 klyra.initialize();
 ```
-
-Run this in the entry point of your project to create and initialize and instance of the KlyraSDK
