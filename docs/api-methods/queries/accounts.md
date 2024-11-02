@@ -27,6 +27,24 @@ import TabItem from '@theme/TabItem';
   ```
 
   </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  params = {
+      "address": address,
+      "subaccountNumber": subaccount_number
+  }
+
+  response = requests.get("https://klyra-indexer.com/v4/assetPositions", params=params)
+  positions = response.json()
+  ```
+  </TabItem>
+
   <TabItem value="curl" label="cURL">
 
   ```bash
@@ -62,7 +80,6 @@ Returns an array of the following type
 
 ## Orders
 Fetch the orders of a given user
-
 <Tabs>
   <TabItem value="typescript" label="TypeScript" default>
 
@@ -73,6 +90,26 @@ Fetch the orders of a given user
   const subaccountNumber = 0;
 
   const marketInfo: IndexerSubaccountOrder[]= await klyra.getUserOrders(address, subaccountNumber);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  params = {
+      "address": address,
+      "subaccountNumber": subaccount_number,
+      "ticker": "BTC-USD",  # optional
+      "side": "BUY"  # optional
+  }
+
+  response = requests.get("https://klyra-indexer.com/v4/orders", params=params)
+  orders = response.json()
   ```
 
   </TabItem>
@@ -131,6 +168,7 @@ interface IndexerSubaccountOrder {
 
 ## Order by Id
 Fetch an order by an order Id
+
 <Tabs>
   <TabItem value="typescript" label="TypeScript" default>
 
@@ -140,6 +178,17 @@ Fetch an order by an order Id
   const orderId = "149";
 
   const marketInfo: IndexerSubaccountOrder= await klyra.getOrder(orderId);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  order_id = "149"
+  response = requests.get(f"https://klyra-indexer.com/v4/orders/{order_id}")
+  order = response.json()
   ```
 
   </TabItem>
@@ -200,6 +249,28 @@ Fetch the order fills for a specific account
   const subaccountNumber = 0;
 
   const marketInfo: IndexerSubaccountFill[]= await klyra.getUserFills(address, subaccountNumber);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+  from datetime import datetime
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  params = {
+      "address": address,
+      "subaccountNumber": subaccount_number,
+      "ticker": "BTC-USD",  # optional
+      "createdBeforeOrAt": datetime.utcnow().isoformat(),  # optional
+      "page": 1  # optional
+  }
+
+  response = requests.get("https://klyra-indexer.com/v4/fills", params=params)
+  fills = response.json()
   ```
 
   </TabItem>
@@ -268,6 +339,28 @@ Fetch the transfers made by a specific account
   ```
 
   </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+  from datetime import datetime
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  params = {
+      "address": address,
+      "subaccountNumber": subaccount_number,
+      "ticker": "BTC-USD",  # optional
+      "createdBeforeOrAt": datetime.utcnow().isoformat(),  # optional
+      "page": 1  # optional
+  }
+
+  response = requests.get("https://klyra-indexer.com/v4/transfers", params=params)
+  transfers = response.json()
+  ```
+
+  </TabItem>
   <TabItem value="curl" label="cURL">
 
   ```bash
@@ -331,6 +424,28 @@ Get the historical PNL's for a specific user
   ```
 
   </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+  from datetime import datetime
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  params = {
+      "address": address,
+      "subaccountNumber": subaccount_number,
+      "ticker": "BTC-USD",  # optional
+      "createdBeforeOrAt": datetime.utcnow().isoformat(),  # optional
+      "page": 1  # optional
+  }
+
+  response = requests.get("https://klyra-indexer.com/v4/historical-pnl", params=params)
+  historical_pnl = response.json()
+  ```
+
+  </TabItem>
   <TabItem value="curl" label="cURL">
 
   ```bash
@@ -387,6 +502,21 @@ Get detailed information about all user subaccounts for a specified account
   ```
 
   </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  subaccount_number = 0
+
+  response = requests.get(
+      f"https://klyra-indexer.com/v4/addresses/{address}/subaccountNumber/{subaccount_number}"
+  )
+  subaccount_info = response.json()
+  ```
+
+  </TabItem>
   <TabItem value="curl" label="cURL">
 
 ```bash
@@ -434,6 +564,19 @@ Get detailed information about all user subaccounts for a specified account
   const address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs";
 
   const marketInfo: IndexerSubaccountResponse[]= await klyra.getAllUserSubaccountsInfo(address);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  address = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs"
+  params = {"address": address}
+
+  response = requests.get("https://klyra-indexer.com/v4/addresses/", params=params)
+  all_subaccounts_info = response.json()
   ```
 
   </TabItem>

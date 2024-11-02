@@ -9,6 +9,7 @@ Fech all the data related to market specific information
 ## Market Info
 Get all market data for a specific Klyra market
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -22,6 +23,17 @@ import TabItem from '@theme/TabItem';
   const ticker = "BTC-USD"
 
   const marketInfo: IndexerPerpetualMarket= await klyra.getMarketInfo(ticker);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  ticker = "BTC-USD"
+  response = requests.get(f"https://klyra-indexer.com/v4/perpetualMarkets/{ticker}")
+  market_info = response.json()
   ```
 
   </TabItem>
@@ -83,6 +95,33 @@ Fetch candles for a speicifc market
   ```
 
   </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+  from datetime import datetime, timedelta
+
+  ticker = "BTC-USD"
+  resolution = "1MIN"
+  
+  # Example date range for the last 24 hours
+  to_iso = datetime.utcnow().isoformat()
+  from_iso = (datetime.utcnow() - timedelta(days=1)).isoformat()
+  
+  params = {
+      "resolution": resolution,
+      "fromISO": from_iso,
+      "toISO": to_iso
+  }
+  
+  response = requests.get(
+      f"https://klyra-indexer.com/v4/candles/perpetualMarkets/{ticker}",
+      params=params
+  )
+  candles = response.json()
+  ```
+
+  </TabItem>
   <TabItem value="curl" label="cURL">
 
 ```bash
@@ -126,7 +165,6 @@ interface IndexerCandleContents {
 
 ## Market Orderbook
 Fetch the current orderbook of a specified market
-
 <Tabs>
   <TabItem value="typescript" label="TypeScript" default>
 
@@ -136,6 +174,17 @@ Fetch the current orderbook of a specified market
   const ticker = "BTC-USD"
   
   const orderbook: IndexerOrderbook = await klyra.getOrderbook(ticker);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  ticker = "BTC-USD"
+  response = requests.get(f"https://klyra-indexer.com/v4/orderbooks/perpetualMarket/{ticker}")
+  orderbook = response.json()
   ```
 
   </TabItem>
@@ -179,6 +228,17 @@ Fetch the historical funding rates for a specified market
   const ticker = "BTC-USD"
   
   const fundingRates: IndexerHistoricalFunding[] = await klyra.getHistoricalFundingRates(ticker);
+  ```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+  ```python
+  import requests
+
+  ticker = "BTC-USD"
+  response = requests.get(f"https://klyra-indexer.com/v4/historicalFunding/{ticker}")
+  funding_rates = response.json()
   ```
 
   </TabItem>
