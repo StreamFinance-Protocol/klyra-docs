@@ -4,7 +4,6 @@ description: Explore order paremeter types
 ---
 
 # Order Types
-
 Formal documentation for different types used to place and cancel orders
 
 ## Order Side

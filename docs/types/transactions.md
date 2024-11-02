@@ -4,6 +4,7 @@ description: Explore transaction types
 ---
 
 # Transaction Types
+Transaction types are those that are used in the response from [transaction methods](../api-methods/transactions/placing-orders.md)
 
 ## Tx Response
 The response of all transactions placed through the KlyraSDK

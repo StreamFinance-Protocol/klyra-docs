@@ -28,7 +28,7 @@ const klyra = new Klyra({
 - **fees**: The default configuration for fees captured by the exchange per order. This is the default value, but adjusting fees dynamically on a per order basis can also be accomplished when calling transaction methods
 
 
-## Initializationm
+## Initialization
 Initializing the instance you just created is will connect your application to both Klyra Nodes through GRPC and the Klyra Indexer through websocket
 
 ```typescript
