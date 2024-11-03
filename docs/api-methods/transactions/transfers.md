@@ -4,6 +4,7 @@ description: Transfer assets between accounts
 ---
 
 # Transfer Methods
+
 Transfer methods are the way to transfer assets between accounts on Klyra
 
 ## Transfer
@@ -11,29 +12,27 @@ Transfer methods are the way to transfer assets between accounts on Klyra
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
   <TabItem value="typescript" label="TypeScript" default>
 
-  ```typescript
-  import { WalletSubaccountInfo, TxResponsePromise } from '@klyra/chain';
-  
-  const subaccount = new WalletSubaccountInfo(wallet, 0);
-  const recipientAddress = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs";
-  const recipientSubaccountNumber = 0;
-  const amount = "100"
-  
-  const tx: TxResponsePromise = await klyra.transfer(
-    subaccount,
-    recipientAddress
-    recipientSubaccountNumber,
-    amount
-  );
-  ```
+```typescript
+import { WalletSubaccountInfo, TxResponsePromise } from '@klyra/core';
+
+const subaccount = new WalletSubaccountInfo(wallet, 0);
+const recipientAddress = "klyra10fx7sy6ywd5senxae9dwytf8jxek3t2gcen2vs";
+const recipientSubaccountNumber = 0;
+const amount = "100"
+
+const tx: TxResponsePromise = await klyra.transfer(
+  subaccount,
+  recipientAddress
+  recipientSubaccountNumber,
+  amount
+);
+```
 
   </TabItem>
 </Tabs>
-
 
 <br />
 A transfer transaction will transfer an asset between subaccounts
