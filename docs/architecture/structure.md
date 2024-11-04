@@ -14,9 +14,9 @@ The KlyraSDK is composed of 3 core components:
 ## Core
 
 Core fuses all parts of the sdk into a single component. Core can be thought of as the entry
-point for the KlyraSDK. It manages the initilization of both **Chain** and **Cortex**. Additionally, 
+point for the KlyraSDK. It manages the initialization of both **Chain** and **Cortex**. Additionally, 
 upon initialization of Core, websocket connections will be established with the indexer of Klyra
-to be receive live updates from Klyra. When KlyraSDK methos are called, Core will delegate these
+to be receive live updates from Klyra. When KlyraSDK methods are called, Core will delegate these
 calls to the appropriate component. For example `placeOrder()` will delegate to **Chain** and 
 delegate `getMarket()` to **Cortex**
 
@@ -42,8 +42,8 @@ indexer.
 ## Cortex
 
 Cortex is the KlyraSDK state manager component. Upon the websocket connection established in **Core**, 
-the KlyraSDK will begin receiving constant state updates from Klyra. This data reveived by the KlyraSDK
-will be routed to the Cortex component where it will proccess this data into its proper types and
+the KlyraSDK will begin receiving constant state updates from Klyra. This data received by the KlyraSDK
+will be routed to the Cortex component where it will process this data into its proper types and
 save it in it's store for it to be queried through KlyraSDK methods like `getOrderbook()`
 
 <div style={{ margin: '40px 0' }}>

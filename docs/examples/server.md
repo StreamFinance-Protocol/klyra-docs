@@ -4,7 +4,7 @@ description: See example server usage of the KlyraSDK
 ---
 
 # Server Example
-Learn how to implement the KlyraSDK on a backend server. For this example we will use a prexisting [Express](https://expressjs.com/) server template and work from there. The example will go thorugh the following steps:
+Learn how to implement the KlyraSDK on a backend server. For this example we will use a preexisting [Express](https://expressjs.com/) server template and work from there. The example will go through the following steps:
 - **Installation**: Installing the KlyraSDK
 - **Initialization**: Configuring and initializing the KlyraSDK and the Express server
 - **Creating Endpoints**: Creating controllers and routes for specific endpoints
@@ -77,7 +77,7 @@ app.get("/status", (_, response) => {
 
 app.use(router);
 
-// initalize the klyraSDK - will connect the SDK to Klyra
+// initialize the klyraSDK - will connect the SDK to Klyra
 await klyra.initialize();
 
 app.listen(port, () => {
@@ -220,7 +220,7 @@ const authenticateUser = async (
   // here ensure the username exists in your DB
 
   // we use @klyra/core's `authenticateUser` so we don't have to worry about how to get the wallet from user's credentials
-  const { wallet, address } = await klyra.autheticateUserFromCredentials(
+  const { wallet, address } = await klyra.authenticateUserFromCredentials(
     username,
     pwd
   );
@@ -280,7 +280,7 @@ const authenticateUser = async (
   // here ensure the username exists in your DB
 
   // we use @klyra/core's `authenticateUser` so we don't have to worry about how to get the wallet from user's credentials
-  const { wallet, address } = await klyra.autheticateUserFromCredentials(
+  const { wallet, address } = await klyra.authenticateUserFromCredentials(
     username,
     pwd
   );
@@ -385,7 +385,7 @@ Great! We now have both `markets` and `orders` endpoints.
 
 ---
 
-We now have a full express server using the KlyraSDK to connect to klyra. See the full example code [here](https://github.com/GonzaDDV/klyra-sdk)
+We now have a full express server using the KlyraSDK to connect to klyra. See the full example code [here](https://github.com/GonzaDDV/klyra-sdk) where we expand on this example and add other endpoints
 
 
 
