@@ -203,29 +203,30 @@ Great! We have just created our first endpoint which will service GET requests i
 Order endpoints will be hit with POST requests and is designed to handle a client's intention to place an order on Klyra
 
 #### Authentication Flow
-In order to submit orders to klyra, we need to sign our transactions. In this example we will use a custodial solution in which users create an account with a username + password and our server will derive their klyra private key from this and use it to sign transactions. First we need to create an authentication function which will delegate to the KlyraSDK to build a `WalletSubaccountInfo` object from the credentials. This code can be used in the controller we create in the next step.
+In order to submit orders to klyra, we need to sign our transactions. In this example we will use a custodial solution in which users create an account with a unique user identifier(UUID) and our server will derive their klyra private key from this and use it to sign transactions. First we need to create an authentication function which will delegate to the KlyraSDK to build a `WalletSubaccountInfo` object from the uuid. This code can be used in the controller we create in the next step.
+
+:::warning
+The uuid must be entirely random, unique, persistent, and most importantly secret for each user across uses of the KlyraSDK. Learn more about the behind the scenes of authentication / key generation [here](../key-generation.md)
+:::
 
 ```typescript
 import { type LocalWallet, WalletSubaccountInfo } from "@klyra/core";
 import { klyra } from "../index";
+
 const authenticateUser = async (
-  username: string,
-  pwd: string,
+  uuid: string,
   subaccountNumber?: number
 ): Promise<{
   wallet: LocalWallet;
   address: string;
   subaccountInfo: WalletSubaccountInfo;
 }> => {
-  // here ensure the username exists in your DB
+  // here ensure the uuid exists in your DB
 
   // we use @klyra/core's `authenticateUser` so we don't have to worry about how to get the wallet from user's credentials
-  const { wallet, address } = await klyra.authenticateUserFromCredentials(
-    username,
-    pwd
-  );
+  const { wallet, address } = await klyra.authenticateUserFromUUID(uuid);
 
-  // the WalletSubaccountInfo class is used to sign messages on behalf of a subaccount, which is why we need to pass the wallet and the subaccount number. It's used to place orders, cancel orders, etc.
+  // the WalletSubaccountInfo class is used to sign messages on behalf of a subaccount, which is why we need to pass the wallet and the subaccount number it's used to place orders, cancel orders, etc.
   const subaccountInfo = new WalletSubaccountInfo(wallet, subaccountNumber);
 
   return { wallet, address, subaccountInfo };
@@ -252,8 +253,7 @@ import { klyra } from "../lib/klyra";
 dotenv.config();
 // Create a type to handle the request body
 interface PlaceMarketOrderRequestBody {
-  username: string;
-  pwd: string;
+  uuid: string;
   subaccountNumber: number;
   marketTicker: string;
   side: OrderSide;
@@ -267,25 +267,21 @@ interface PlaceMarketOrderRequestBody {
 const MNEMONIC = process.env.MNEMONIC ?? "default_mnemonic";
 const ROUTER_FEE_PPM = 1000;
 
-// Authentication helper function to fetch a wallet from an username, password combination
+// Authentication helper function to fetch a wallet from a uuid
 const authenticateUser = async (
-  username: string,
-  pwd: string,
+  uuid: string,
   subaccountNumber?: number
 ): Promise<{
   wallet: LocalWallet;
   address: string;
   subaccountInfo: WalletSubaccountInfo;
 }> => {
-  // here ensure the username exists in your DB
+  // here ensure the uuid exists in your DB
 
   // we use @klyra/core's `authenticateUser` so we don't have to worry about how to get the wallet from user's credentials
-  const { wallet, address } = await klyra.authenticateUserFromCredentials(
-    username,
-    pwd
-  );
+  const { wallet, address } = await klyra.authenticateUserFromUUID(uuid);
 
-  // The WalletSubaccountInfo class is used to sign messages on behalf of a subaccount, which is why we need to pass the wallet and the subaccount number. It's used to place orders, cancel orders, etc.
+  // the WalletSubaccountInfo class is used to sign messages on behalf of a subaccount, which is why we need to pass the wallet and the subaccount number it's used to place orders, cancel orders, etc.
   const subaccountInfo = new WalletSubaccountInfo(wallet, subaccountNumber);
 
   return { wallet, address, subaccountInfo };
@@ -304,16 +300,14 @@ const placeMarketOrder = async (
     reduceOnly = false,
     clientId,
     memo,
-    username,
-    pwd,
+    uuid,
     subaccountNumber,
   } = req.body;
 
   try {
     // authenticate the user,
     const { subaccountInfo } = await authenticateUser(
-      username,
-      pwd,
+      uuid,
       subaccountNumber
     );
 
