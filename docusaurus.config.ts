@@ -8,6 +8,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
 
+
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -53,10 +54,10 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     navbar: {
-      title: 'Klyra',
+      title: '',
       logo: {
         alt: 'Klyra',
-        src: 'img/stream-logo.svg',
+        src: 'img/klyra-logo.svg',
       },
       items: [
         {
