@@ -6,14 +6,18 @@ description: What are liquidations?
 # Liquidations
 
 ## Introductory
-Liquidations in perpetuals occur when a trader's account becomes too risky for the system. Imagine borrowing money to bet on the price of something, like Bitcoin, and the market moves against you so much that your losses are close to exceeding the value of your account. To protect the system and other traders, the platform steps in to "close" your position before the losses grow uncontrollably. This process is called liquidation.
+Liquidations are a safety mechanism for Klyra to ensure that no trader's account goes negative. As stated in the [overview](../overview.md), one traders loss is another traders gain. Therefore, if one account is negative, then some other trader has profit that Klyra  can't pay out. In finance, this would be called an insolvent platform, and it's the worst thing that can happen to a financial platform.
 
-It's important to note that the price at which a liquidation is triggered is known to the trader when they enter the perpetual, so it should never come as a surprise.
+Every trade a trader opens, another trader is on the other side. For example if Alice goes long 1 BTC, then Bob (or some other trader) is short 1 BTC. Let's say the price of BTC rises, and Bob begins to lose a lot of money, up until the point where his losses are equal to his [collateral](./collateral-pools.md), i.e his account value is zero. At this point, the simplest thing Klyra could do is force close the position for both Alice and Bob. Now Klyra can be sure that an account can not go negative in value because it force closes all it's positions.
 
-In essence, liquidations act as a safety net for the trading platform, ensuring that no single bad trade can jeopardize the system's stability.
+This works, but it's an awful UX for Alice. Imagine she wanted to continue holding her 1 BTC long - why should she be forced to close her position because Bob lost money? To combat this, the Klyra doesn't force close the position for both sides, instead it finds a new trader (who also wants to short BTC), to take the other side of Alice's position. Now Bob's side of the position is force closed, but Alice's position remains open but with a new trader. 
+
+However, this process of finding a new trader takes time so this process can't start as soon as the trader's account value hits zero. Since it's not clear how much time it would take, if Klyra started this process when the account value hit's zero, it may be possible by the time a new trader is found the zero value account has become negative. Therefore this process of finding a new trader is called a **liquidation** and it happens slightly before the account hits zero to allow for this buffer to find a new trader.
+
+In essence, liquidations act as a safety net for Klyra, ensuring that no single bad trade can jeopardize the system's stability.
 
 ## Advanced
-Liquidation is the process of forcefully closing a trader's position on the orderbook. This occurs when the trader's account balance, including collateral and unrealized profits or losses, falls below the maintenance margin requirement. During liquidation, the system matches the trader’s position with counter-orders on the market, effectively selling or buying the position to bring the account back into compliance or close it entirely. If liquidity is insufficient or the clearing price results in a negative balance, additional mechanisms, such as insurance funds or deleveraging, are employed to manage risks.
+On Klyra liquidations are forcefully closing a trader's position on the orderbook. This occurs when the trader's account balance, including collateral and unrealized profits or losses, falls below the maintenance margin requirement. During liquidation, the system matches the trader’s position with counter-orders on the market, effectively selling or buying the position to bring the account back into compliance or close it entirely. If liquidity is insufficient or the clearing price results in a negative balance, additional mechanisms, such as insurance funds or deleveraging, are employed to manage risks.
 
 ### Maintenance Margin and Liquidation Conditions
 A perpetual maintenance margin rate is the minimum collateral a trader must maintain to keep a position open. This rate, typically between 1-10% of the position size, varies depending on platform-specific risk parameters. An account is deemed liquidatable when its value (including profits and losses) falls below the maintenance margin requirement.
@@ -31,7 +35,7 @@ Where:
 
 `Weighted Size=Sum( abs(position_size_i) * danger_index_i )`
 
-Here, i refers to each perpetual contract the account holds, and the Danger Index is a market-specific parameter representing the relative risk of that contract. Accounts are sorted by this metric, ensuring that those at the highest risk are prioritized for liquidation.
+Here, `i` refers to each perpetual contract the account holds, and the `danger_index` is a market-specific parameter representing the relative risk of that contract. Accounts are sorted by this metric, ensuring that those at the highest risk are prioritized for liquidation.
 
 ### Liquidation Process
 Once an account is selected for liquidation, the system identifies the specific position (perpetual contract) that, when liquidated, maximally improves the account’s health. If liquidating a single position doesn’t restore the account above the maintenance margin, the account is re-evaluated and re-inserted into the liquidation queue with an updated priority for further processing.
@@ -39,8 +43,8 @@ Once an account is selected for liquidation, the system identifies the specific 
 ### Safety Mechanisms: Insurance Fund and Deleveraging
 To maintain system stability during periods of low market liquidity:
 - Liquidation Prioritization: Liquidations are prioritized over standard orderbook transactions to ensure unhealthy accounts are addressed promptly.
-Insurance Fund: If liquidation results in a negative balance due to low liquidity, the Klyra chain’s insurance fund covers the shortfall. The insurance fund receives a portion of Klyra’s fees and ensures the solvency of the exchange in case of failures. The insurance fund is permissionless and run programmed into the chain: this is not run by the Klyra team or any other central entity.
-In rare cases where liquidation cannot be completed successfully, a deleveraging mechanism is triggered. This mechanism forcefully closes the unhealthy account by offsetting its positions against randomly selected accounts with opposing positions. Deleveraging is a last resort and is designed to be an extremely rare occurrence. If triggered, the system halts the opening of new positions to protect the ecosystem and traders.
+- Insurance Fund: If liquidation results in a negative balance due to low liquidity, the Klyra chain’s insurance fund covers the shortfall. The insurance fund receives a portion of Klyra’s fees and ensures the solvency of the system in case of failures. The insurance fund is permissionless and run programmed into the chain: this is not run by the Klyra team or any other central entity.
+- Deleveraging: In rare cases where liquidation cannot be completed successfully, a deleveraging mechanism is triggered. This mechanism forcefully closes the unhealthy account by offsetting its positions against randomly selected accounts with opposing positions. Deleveraging is a last resort and is designed to be an extremely rare occurrence. If triggered, the system halts the opening of new positions to protect the ecosystem and traders.
 
 
 ### Liquidation Price
