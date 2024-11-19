@@ -24,7 +24,7 @@ Cuando llega el momento de que el validador comparta su visión local de los pre
 `Precio del Oráculo * (1 + precio de financiamiento)`
 
 #### Precio Suavizado Histórico:
-Los precios suavizados históricos se calculan utilizando un suavizado exponencial de los precios. Ver https://en.wikipedia.org/wiki/Exponential_smoothing
+Los precios suavizados históricos se calculan utilizando un [suavizado exponencial](https://es.wikipedia.org/wiki/Suavizamiento_exponencial) de los precios.
 
 ### Mediana del Precio de la Red
 El precio de la red es el precio final utilizado para la lógica financiera de Klyra. Se toma de todos los precios individuales que cada validador propuso por mercado. Así que ahora, el validador que construye el bloque tomará los precios reportados por cada validador para cada mercado y tomará una mediana global de estos precios. El precio final es lo que realmente se escribe en el estado como una actualización de precio para cada mercado específico. El precio tiene propiedades de descentralización completas de la cadena Klyra porque se agrega en cada bloque por los precios propuestos por los validadores, los cuales están firmados por los validadores. Además, para que un precio sea cambiado, se requiere que al menos 2/3 de los validadores sugieran un nuevo precio del cual tomamos una mediana.
