@@ -55,7 +55,7 @@ La magnitud de la tasa de financiamiento crece con la desviación entre el preci
 Para detalles sobre cómo se calculan las tasas de financiamiento, consulta [aquí](./funding-rates.md). Por ahora, entiende las tasas de financiamiento como un mecanismo que mantiene el precio del perp estrechamente vinculado al activo subyacente.
 
 ### Colateral
-El colateral (a veces también llamado margen) es el capital que un trader deposita para respaldar sus posiciones en un intercambio perpetual. Determina el poder de compra de un trader, que es un múltiplo de la cantidad de colateral según el apalancamiento. Por ejemplo, con un apalancamiento de 10x, un trader puede controlar una posición que vale 10 veces su colateral.
+El colateral (a veces también llamado margen) es el capital que un trader deposita para respaldar sus posiciones en Klyra. Determina el poder de compra de un trader, que es un múltiplo de la cantidad de colateral según el apalancamiento. Por ejemplo, con un apalancamiento de 10x, un trader puede controlar una posición que vale 10 veces su colateral.
 
 Por qué el Colateral es Importante:
 - El colateral asegura que un trader que incurre en pérdidas (también llamadas PNL negativa, que significa "ganancias y pérdidas") tenga suficientes fondos para cubrir las ganancias de su contraparte. En una operación, las contrapartes (por ejemplo, Alice y Bob, uno largo y uno corto) efectivamente "ganan" o "pierden" el colateral del otro según el movimiento del precio.
