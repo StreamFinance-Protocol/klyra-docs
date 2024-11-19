@@ -5,6 +5,8 @@ description: What are liquidations?
 
 # Liquidations
 
+![Liquidation diagram](../../static/img/liquidation-diagram.png)
+
 ## Introductory
 Liquidations are a safety mechanism that Klyra uses to ensure no trader's account goes negative. As stated in the [overview](../overview.md), one trader's loss is another trader's gain. Therefore, if one account becomes negative, another trader has profit that Klyra cannot pay out. In finance, this is called an insolvent platform, and it's the worst thing that can happen to a financial platform.
 
