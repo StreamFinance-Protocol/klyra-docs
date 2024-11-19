@@ -9,50 +9,68 @@ description: ¿Qué son los contratos perpetuals?
 Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al contado y productos derivados.
 
 ### Productos al Contado
-Los productos al contado tratan con el activo subyacente real; en otras palabras, cuando posees un producto al contado, posees el activo real. El ejemplo más simple de un producto al contado es un intercambio entre dos activos. Supongamos que tengo BTC y quiero USDC. Cuando cambio el BTC por USDC, poseo el activo real de BTC antes del intercambio, y después del intercambio poseo el activo real de USDC.
+Los productos al contado tratan con el activo subyacente real: cuando posees un producto al contado, posees el activo en sí. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
 
 ### Productos Derivados
-Por otro lado, los productos derivados son herramientas financieras que derivan su valor de un activo subyacente. Aunque derivan su valor de un activo subyacente, cuando posees un producto derivado, no posees el activo subyacente. Los derivados están estructurados como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice cree que el precio de BTC subirá y Bob cree que bajará. Alice y Bob crean un acuerdo en el que por cada \\$100 que suba el precio de BTC, Bob le pagará a Alice \\$500, y lo inverso si el precio baja. Ahora Alice y Bob tienen un contrato (el derivado) cuyo valor deriva del precio subyacente de BTC, pero no requiere la propiedad del activo de ninguna manera.
+Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de $100 en el precio de BTC, Bob le pagará a Alice $500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
 
-Un tipo común de derivado es un contrato de futuros perpetuos, o "perps" en corto. Es un tipo de producto derivado que permite operar un activo con apalancamiento. Operar con apalancamiento significa que obtienes más exposición al activo subyacente de lo que tienes en dinero. Cuando compras un perp, tienes dos opciones: ir largo o corto en el activo. Ir largo en el activo significa que el trader gana dinero cuando el precio del activo subyacente aumenta. Ir corto significa que el trader gana dinero cuando el precio del activo subyacente disminuye.
+Un derivado común es un Contrato de Futuros Perpetuos (o "perp" para abreviar). Los Perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
+
+1. **Larga**: El operador obtiene ganancias cuando el precio del activo subyacente aumenta.
+2. **Corta**: El operador obtiene ganancias cuando el precio del activo subyacente disminuye.
 
 ### Ejemplo de Perp
-Supongamos que tienes \\$1,000. Con un perp, puedes obtener, por ejemplo, exposición a BTC por \\$10,000 (simular las ganancias y pérdidas de una posición de \\$10,000) con solo \\$1,000. A esto lo llamarías estar apalancado 10x. Entonces, las ganancias o pérdidas se multiplican por 10 en este ejemplo. Si el precio de BTC es \\$50,000 cuando compras el perp (suponiendo que vas largo), y luego el precio de BTC sube a \\$55,000 (+10%), entonces tu ganancia es \\$1,000. En cambio, si solo hubieras comprado BTC al contado y no el perp, solo habrías poseído \\$1,000 de BTC y tu ganancia sería de \\$100. Así que cuando estás largo 10x, las ganancias o pérdidas se multiplican por 10.
+Supongamos que tienes $1,000. Con un perp, puedes controlar $10,000 en BTC usando solo tus $1,000. Esto se llama "apalancamiento 10x" porque tu poder de negociación se multiplica por 10.
 
-En consecuencia, los perps son más riesgosos, pero también más recompensantes que comprar el activo al contado, ya que los movimientos de precios se exageran. Los perps ofrecen una buena experiencia de usuario porque el precio del perp sigue el precio del activo subyacente a través de un mecanismo único específico de los perps. A alto nivel, simplemente puede pensarse como una forma de que los traders aumenten su poder de compra. Es importante recordar que debido a que un perp es un derivado, cuando compras un perp, nunca posees el activo subyacente, es solo un acuerdo mutuo entre dos traders.
+Así es como funciona:
+- Si el precio de BTC sube de $50,000 a $55,000 (un aumento del 10%):
+  - Con un perp: Tu posición de $10,000 gana $1,000 (10% de $10,000)
+  - Con spot: Tus $1,000 en BTC solo ganarían $100 (10% de $1,000)
+
+Esto muestra cómo los perps pueden multiplicar tanto las ganancias COMO las pérdidas según la cantidad de apalancamiento (10x en este ejemplo). Esto hace que los perps sean más arriesgados, pero potencialmente más rentables que comprar el activo directamente.
+
+Recuerda: Cuando operas un perp, nunca posees el BTC real, es solo un acuerdo entre operadores que sigue el precio de BTC. Piénsalo como una forma de operar con más poder adquisitivo del que realmente tienes.
 
 ## Avanzado
-Con la intuición sobre por qué se necesitan los perps y lo que habilitan—es decir, acceder a grandes cantidades de apalancamiento para ir largo o corto en un activo determinado—podemos expandirnos sobre los mecanismos que habilitan tal producto derivado.
+Ahora que entendemos por qué existen los perps—para proporcionar apalancamiento para mantener posiciones largas o cortas sin requerir la propiedad del activo—exploremos los mecanismos que los hacen funcionar.
 
-### Tasas de Financiación
-La primera gran pregunta abierta es cómo el precio de un perp sigue el precio del activo subyacente. Las tasas de financiación resuelven esto incentivando a los traders a alinear el precio del perp con el precio subyacente. Son pagos periódicos entre traders largos y cortos, dependiendo de la relación entre el precio del perp y el precio reportado por el [oracle](./oracle.md) del activo subyacente.
+### Tasas de Financiamiento
+La primera gran pregunta abierta es cómo el precio de un perp sigue el precio del activo subyacente. Las tasas de financiamiento resuelven esto incentivando a los operadores a alinear el precio del perp con el precio subyacente. Son pagos periódicos entre operadores largos y cortos, basados en la diferencia entre el precio del perp y el precio reportado por el [oráculo](./oracle.md) del activo subyacente.
 
-Cómo Funciona:
-- Si el precio del perp está **por encima** del precio subyacente, los traders largos pagan financiación a los traders cortos.
-- Si el precio del perp está **por debajo** del precio subyacente, los traders cortos pagan financiación a los traders largos.
+Cómo funciona:
+- Si el precio del perp está **por encima** del precio subyacente, los operadores largos pagan financiamiento a los operadores cortos.
+- Si el precio del perp está **por debajo** del precio subyacente, los operadores cortos pagan financiamiento a los operadores largos.
 
 Este mecanismo funciona porque ir largo aumenta el precio del perp, mientras que ir corto lo disminuye. Por ejemplo:
-- Si el perp está **sobrevalorado**, ir corto gana financiación. Los traders se incentivan a ir corto, lo que hace que el precio baje.
-- Si el perp está **subvalorado**, ir largo gana financiación. Los traders se incentivan a ir largo, lo que hace que el precio suba.
+- Si el perp está **sobrevalorado**, operar corto gana financiamiento y los largos pagan financiamiento. Esto incentiva a los operadores a:
+  1. Abrir posiciones cortas (lo que hace bajar el precio)
+  2. Cerrar posiciones largas (lo que hace bajar aún más el precio)
+- Si el perp está **subvalorado**, operar largo gana financiamiento y los cortos pagan financiamiento. Esto incentiva a los operadores a:
+  1. Abrir posiciones largas (lo que hace subir el precio)
+  2. Cerrar posiciones cortas (lo que hace subir aún más el precio)
 
-La magnitud de la tasa de financiación crece con la desviación entre el precio del perp y el precio subyacente, aumentando los incentivos para operar y realinear los dos. En Klyra, las tasas de financiación se pagan cada hora.
+La magnitud de la tasa de financiamiento crece con la desviación entre el precio del perp y el precio subyacente, aumentando los incentivos para operar y realinear ambos precios. En Klyra, las tasas de financiamiento se pagan cada hora.
 
-Para detalles sobre los cálculos de las tasas de financiación, ver [aquí](./funding-rates.md). Por ahora, entiende que las tasas de financiación son un mecanismo que mantiene el precio del perp estrechamente vinculado al activo subyacente.
+Para detalles sobre cómo se calculan las tasas de financiamiento, consulta [aquí](./funding-rates.md). Por ahora, entiende las tasas de financiamiento como un mecanismo que mantiene el precio del perp estrechamente vinculado al activo subyacente.
 
 ### Colateral
-El colateral (a veces también llamado margen) es el capital que un trader deposita para respaldar sus posiciones en un intercambio perpetuo. Determina el poder de compra del trader, que es un múltiplo del monto de colateral basado en el apalancamiento. Por ejemplo, con apalancamiento de 10x, un trader puede controlar una posición de 10 veces su colateral.
+El colateral (a veces también llamado margen) es el capital que un operador deposita para respaldar sus posiciones en un intercambio perpetuo. Determina el poder de compra de un operador, que es un múltiplo de la cantidad de colateral según el apalancamiento. Por ejemplo, con un apalancamiento de 10x, un operador puede controlar una posición que vale 10 veces su colateral.
 
 Por qué el Colateral es Importante:
-- El colateral asegura que un trader que incurra en pérdidas (PNL negativa) tenga suficientes fondos para cubrir las ganancias de su contraparte. En un intercambio, las contrapartes (por ejemplo, Alice y Bob, uno largo y uno corto) efectivamente "ganan" o "pierden" el colateral del otro según el movimiento del precio.
+- El colateral asegura que un operador que incurre en pérdidas (también llamadas PNL negativa, que significa "ganancias y pérdidas") tenga suficientes fondos para cubrir las ganancias de su contraparte. En una operación, las contrapartes (por ejemplo, Alice y Bob, uno largo y uno corto) efectivamente "ganan" o "pierden" el colateral del otro según el movimiento del precio.
 
 Apalancamiento y Riesgo:
-- Un apalancamiento mayor aumenta el riesgo porque el PNL se amplifica por el múltiplo de apalancamiento. Por ejemplo, con apalancamiento de 20x, un pequeño movimiento adverso en el precio puede agotar rápidamente el colateral de un trader. Un apalancamiento menor (por ejemplo, 2x) proporciona más margen para las fluctuaciones de precio, reduciendo el riesgo de perder todo el colateral.
+- Un apalancamiento más alto aumenta el riesgo porque la PNL se amplifica por el múltiplo de apalancamiento. Por ejemplo, con apalancamiento 20x, un pequeño movimiento adverso del precio puede agotar rápidamente el colateral de un operador. Un apalancamiento menor (por ejemplo, 2x) proporciona más margen frente a las fluctuaciones del precio, reduciendo el riesgo de perder todo el colateral.
 
-En resumen, el colateral asegura la integridad del sistema de intercambio al salvaguardar los pagos de contrapartes y alinear el riesgo con el tamaño de la posición.
+En resumen, el colateral asegura la integridad del sistema de negociación protegiendo los pagos a las contrapartes y alineando el riesgo con el tamaño de la posición.
 
 ### Liquidaciones
-En su núcleo, los perps son un acuerdo entre dos partes, por lo que ¿qué sucede cuando el precio se mueve y el colateral de un trader se agota a cero? Supongamos que Alice y Bob abren un perp entre ellos con Alice largo en BTC y Bob corto en BTC. Ahora el precio de BTC sube y la posición corta de Bob está perdiendo tanto dinero que sus pérdidas son iguales a su colateral. Una opción que podría hacer un intercambio es forzar el cierre de esta posición en ambos lados. Así que Alice y Bob salen de la posición y Bob le da su colateral a Alice para proporcionar las ganancias de Alice. Sin embargo, esto crea una experiencia de usuario muy extraña para Alice: ¿y si Alice no quería cerrar su posición? Por esta razón, Klyra implementa un mecanismo llamado liquidaciones, que en este ejemplo facilitaría la transferencia de la posición de Bob a un nuevo trader. Ahora, en lugar de cerrar la posición de Alice, Alice tiene un nuevo contraparte y solo Bob es forzado a salir de su posición, ya que ya no tiene colateral para pagar las ganancias de su contraparte.
+En su núcleo, los perps son un acuerdo entre dos partes, ¿qué sucede cuando el precio se mueve y el colateral de un operador se agota hasta llegar a cero? Vamos a usar un ejemplo:
 
-Las liquidaciones aseguran la solvencia de un intercambio. En otras palabras, se aseguran de que un trader nunca tenga un colateral negativo. Si tal caso surgiera, un trader tendría ganancias que no podrían pagarse porque esas PNL no podrían ser suministradas por el colateral de la contraparte. Un invariante de Klyra es que el PNL neto total de los traders es cero (es decir, si alguien gana \\$X, otro trader pierde \\$-X). Un trader con colateral negativo es lo peor que le puede pasar a un intercambio de perps. Para combatir esto, las liquidaciones no ocurren cuando el colateral de un trader es exactamente cero. En cambio, las liquidaciones ocurren un poco antes de que el colateral llegue a cero para permitir que el intercambio encuentre una nueva contraparte para la posición.
+Alice y Bob abren un perp entre sí, con Alice en largo de BTC y Bob en corto de BTC. El precio de BTC sube hasta que las pérdidas de Bob igualan su colateral. Una solución simple sería cerrar ambas posiciones: el colateral de Bob se enviaría a Alice y ambos traders saldrían de sus posiciones.
+
+Sin embargo, esto crea una mala experiencia para Alice: ¿y si no quería cerrar su posición? Por esto, Klyra implementa liquidaciones, que transfieren la posición de Bob a un nuevo operador. En lugar de cerrar la posición de Alice, ella obtiene una nueva contraparte mientras solo Bob es obligado a salir (ya que no tiene más colateral para cubrir posibles pérdidas).
+
+Las liquidaciones aseguran la solvencia del intercambio al prevenir colateral negativo. Si un operador tuviera colateral negativo, su contraparte tendría ganancias que no podrían ser pagadas. Una clave de Klyra es que el PNL neto total debe ser cero (es decir, si alguien gana $X, otro operador debe perder $X). Para prevenir escenarios de colateral negativo, las liquidaciones ocurren justo antes de que el colateral de un operador llegue a cero, dando tiempo al intercambio para encontrar una nueva contraparte.
 
 Encuentra exactamente cómo funcionan las liquidaciones en Klyra [aquí](./liquidations.md).
