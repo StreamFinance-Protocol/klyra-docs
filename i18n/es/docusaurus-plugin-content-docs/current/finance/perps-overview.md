@@ -41,13 +41,13 @@ Cómo funciona:
 - Si el precio del perp está **por encima** del precio subyacente, los operadores largos pagan financiamiento a los operadores cortos.
 - Si el precio del perp está **por debajo** del precio subyacente, los operadores cortos pagan financiamiento a los operadores largos.
 
-Este mecanismo funciona porque ir largo aumenta el precio del perp, mientras que ir corto lo disminuye. Por ejemplo:
-- Si el perp está **sobrevalorado**, operar corto gana financiamiento y los largos pagan financiamiento. Esto incentiva a los operadores a:
-  1. Abrir posiciones cortas (lo que hace bajar el precio)
-  2. Cerrar posiciones largas (lo que hace bajar aún más el precio)
-- Si el perp está **subvalorado**, operar largo gana financiamiento y los cortos pagan financiamiento. Esto incentiva a los operadores a:
-  1. Abrir posiciones largas (lo que hace subir el precio)
-  2. Cerrar posiciones cortas (lo que hace subir aún más el precio)
+La tasa de financiamiento por lo tanto crea incentivos para corregir el precio del perp:
+- Si el perp está **por encima** del precio del activo subyacente, los cortos ganan financiamiento y los largos pagan financiamiento. Esto incentiva a los operadores a:
+  1. Abrir posiciones cortas (haciendo bajar el precio)
+  2. Cerrar posiciones largas (haciendo bajar aún más el precio)
+- Si el perp está **por debajo** del precio del activo subyacente, los largos ganan financiamiento y los cortos pagan financiamiento. Esto incentiva a los operadores a:
+  1. Abrir posiciones largas (haciendo subir el precio)
+  2. Cerrar posiciones cortas (haciendo subir aún más el precio)
 
 La magnitud de la tasa de financiamiento crece con la desviación entre el precio del perp y el precio subyacente, aumentando los incentivos para operar y realinear ambos precios. En Klyra, las tasas de financiamiento se pagan cada hora.
 
