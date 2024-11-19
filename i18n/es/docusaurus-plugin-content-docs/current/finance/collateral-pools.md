@@ -6,9 +6,11 @@ description: ¿Como maneja el riesgo en Klyra?
 # Colateral
 
 ## Introducción
-El colateral (o margen) es el capital que un trader deposita para respaldar sus posiciones en un intercambio perpetual. Asegura que los traders que incurrean en pérdidas tengan suficientes fondos para cubrir las ganancias de su contraparte. El colateral mantiene la integridad del sistema de trading al garantizar que ambas partes en una operación puedan cumplir con sus obligaciones, alineando el riesgo con el tamaño de la posición y evitando escenarios en los que las pérdidas de un trader superen sus fondos disponibles.
+El colateral (o margen) es el capital que un trader deposita para respaldar sus posiciones en un intercambio perpetual. Asegura que los traders que incurrean en pérdidas tengan suficientes fondos para cubrir las ganancias de su contraparte. El colateral mantiene la integridad del sistema de trading al garantizar que ambas partes en una operación puedan cumplir con sus obligaciones, alineando el riesgo con el tamaño de la posición y evitando escenarios en los que las pérdidas de un trader superen sus fondos disponibles. 
 
-Una pregunta natural que surge es qué garantías debe admitir un perpetual. Imagina que dos comerciantes desean operar con diferentes garantías y se niegan a aceptar cualquier otra cosa, entonces no podrían operar entre sí porque no habría forma de pagar ganancias y pérdidas al otro. En otras palabras, la única forma de que dos comerciantes con diferentes garantías operen entre sí es si están dispuestos a aceptar la garantía del otro comerciante. En general, esta es una suposición que no es verdadera, un comerciante puede confiar solo en USDC y BTC y no querer operar con alguien que use Solana.
+Una pregunta natural que surge es: ¿Qué garantías debe admitir un perpetual?
+
+Imagina que dos comerciantes desean operar con diferentes garantías y se niegan a aceptar cualquier otra cosa, entonces no podrían operar entre sí porque no habría forma de pagar ganancias y pérdidas al otro. En otras palabras, la única forma de que dos comerciantes con diferentes garantías operen entre sí es si están dispuestos a aceptar la garantía del otro comerciante. En general, esta es una suposición que no es verdadera, un comerciante puede confiar solo en USDC y BTC y no querer operar con alguien que use Solana.
 
 Sin embargo, queremos que Klyra permita a un usuario que desee operar con garantías de Solana hacerlo.
 

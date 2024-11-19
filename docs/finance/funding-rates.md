@@ -86,4 +86,4 @@ In order to protect traders, there is a maximum cap on the 8-hour funding rate. 
 
 `8-hour Funding Rate Cap = 600% * (Initial Margin - Maintenance Margin Requirement)`
 
-For example, if the Initial Margin is 6% and the Maintenance Margin Requirement is 3%, then the 8-hour Funding Rate Cap is 18%. To read more about marging requirements, refer to the [liquidations](./liquidations.md#advanced) page.
+For example, if the Initial Margin is 6% and the Maintenance Margin Requirement is 3%, then the 8-hour Funding Rate Cap is 18%. To read more about marging requirements, refer to the [liquidations](./liquidations.md#maintenance-margin-and-liquidation-conditions) page.

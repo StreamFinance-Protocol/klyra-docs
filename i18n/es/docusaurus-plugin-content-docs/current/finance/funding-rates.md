@@ -86,4 +86,4 @@ Para proteger a los traders, existe un límite máximo para la tasa de financiam
 
 `Límite de Tasa de Financiamiento de 8 horas = 600% * (Margen Inicial - Requisito de Margen de Mantenimiento)`
 
-Por ejemplo, si el Margen Inicial es del 6% y el Requisito de Margen de Mantenimiento es del 3%, entonces el Límite de Tasa de Financiamiento de 8 horas es del 18%.
+Por ejemplo, si el Margen Inicial es del 6% y el Requisito de Margen de Mantenimiento es del 3%, entonces el Límite de Tasa de Financiamiento de 8 horas es del 18%. Para leer más sobre los requisitos de margen, consulta la página de [liquidaciones](./liquidations.md#margen-de-mantenimiento-y-condiciones-de-liquidación).
