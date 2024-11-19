@@ -11,7 +11,7 @@ Estos documentos están incompletos y solo sirven como una introducción a los c
 :::
 
 ## ¿Qué es Klyra?
-Klyra es la infraestructura financiera base para una variedad de participantes: traders, creadores de mercado, exchanges y desarrolladores. Klyra proporciona los rieles que conectan a estos participantes principales en un sistema robusto y descentralizado. Klyra permite que los mercados globales 24/7 impulsen los límites de un sistema financiero creíblemente neutral.
+Klyra es la infraestructura financiera base para traders, creadores de mercado, exchanges y desarrolladores. Klyra proporciona los rieles que conectan a estos participantes principales en un sistema robusto y descentralizado. Klyra permite que los mercados globales 24/7 impulsen los límites de un sistema financiero creíblemente neutral.
 
 ## Casos de Uso
 - **un derivado, múltiples plataformas**: como trader, utiliza diferentes funcionalidades de distintos exchanges mientras interactúas con la misma posición en derivados

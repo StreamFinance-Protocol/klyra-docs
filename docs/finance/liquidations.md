@@ -20,7 +20,15 @@ In essence, liquidations serve as a safety net for Klyra, ensuring that no singl
 On Klyra, liquidations are the forced closure of a trader's position on the orderbook. This occurs when the trader's account balance—including collateral and unrealized profits or losses—falls below the maintenance margin requirement. During liquidation, the system matches the trader's position with counter-orders on the market, effectively selling or buying the position to bring the account back into compliance or close it entirely. If liquidity is insufficient or the clearing price results in a negative balance, additional mechanisms, such as insurance funds or deleveraging, are employed to manage risks.
 
 ### Maintenance Margin and Liquidation Conditions
-The perpetual maintenance margin rate is the minimum collateral a trader must maintain to keep a position open. This rate, typically between 1-10% of the position size, varies depending on platform-specific risk parameters. An account is deemed liquidatable when its value (including profits and losses) falls below the maintenance margin requirement.
+A perpetual maintenance margin is the minimum collateral a trader must maintain to keep a position open. The maintenance margin for one position is calculated as:
+
+`maintenance_margin = abs(position_value * maintenance_margin_rate)`
+
+Where:
+
+`position_value = position_size * network_price`
+
+We see that the maintenance margin depends on both the position size (leverage), the [network price](./oracle.md), and the maintenance margin rate. This rate, typically between 1-10%, varies depending on platform-specific risk parameters. An account is deemed liquidatable when its value (including profits and losses) falls below the maintenance margin requirement.
 
 Each block, the system identifies all accounts with liquidatable positions. However, due to the cap on transactions per block, not all positions can be liquidated at once. To address this limitation, the system employs a priority mechanism that determines which accounts are liquidated first, based on their risk level.
 
