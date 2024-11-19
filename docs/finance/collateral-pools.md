@@ -6,7 +6,9 @@ description: What are collateral pools?
 # Collateral Pools
 
 ## Introductory
-As described in the [overview](./perps-overview.md), perpetuals are always backed by collateral. A natural question arises: what types of collateral should a perpetual support? 
+Collateral (or margin) is the capital a trader deposits to support their positions on Klyra. It ensures that traders who incur losses have enough funds to cover their counterparty's profits. Collateral maintains the integrity of the trading system by ensuring that both parties in a trade can fulfill their obligations, aligning risk with the size of the position and preventing scenarios where a trader's losses exceed her available funds.
+
+A natural question arises: What type of collateral should a perpetual support? 
 
 Consider a scenario where two traders wish to trade using different collateral types, and each refuses to accept the other's collateral. In this case, they cannot trade with each other because there would be no way to settle profits and losses between them. While traders could theoretically trade with different collateral types if they were willing to accept each other's assets, this is generally unrealistic. For example, a trader might only trust USDC and BTC and not want to trade with someone using Dogecoin. Nevertheless, Klyra aims to create a platform where users can trade using their preferred collateral, even if it's Dogecoin.
 

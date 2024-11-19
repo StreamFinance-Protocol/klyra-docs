@@ -10,7 +10,7 @@ Una pieza central de la infraestructura de Klyra es llevar un registro de qué c
 
 ## Avanzada
 
-### El Esquema (largo perpetuo)
+### El Esquema (largo perpetual)
 La estructura de cuentas de Klyra se puede entender mejor como compuesta por dos secciones: activos y perpetuals.
 
 ![Alice blank img](../../../../../static/img/alice-blank-dark.png)
@@ -23,7 +23,7 @@ Su cuenta ahora ha sido acreditada con 1,000 DAI. Alice quiere abrir una posici�
 
 ![Alice perp open img](../../../../../static/img/alice-perp-open-dark.png)
 
-Aquí es donde aparece nuestro sistema de contabilidad por primera vez. Cuando un usuario abre una posición larga, el valor en DAI de su posición al abrirse se resta de su sección de "activos", y la cantidad de BTC que compró (es decir, 0.1 BTC) se añade a su sección de "perpetuos". Un punto clave es que el valor total de la estructura de la cuenta no ha cambiado: 0.1 BTC = 10,000 DAI, por lo que `0.1 BTC + (-9,000 DAI) = 1,000 DAI`.
+Aquí es donde aparece nuestro sistema de contabilidad por primera vez. Cuando un usuario abre una posición larga, el valor en DAI de su posición al abrirse se resta de su sección de "activos", y la cantidad de BTC que compró (es decir, 0.1 BTC) se añade a su sección de "perpetuals". Un punto clave es que el valor total de la estructura de la cuenta no ha cambiado: 0.1 BTC = 10,000 DAI, por lo que `0.1 BTC + (-9,000 DAI) = 1,000 DAI`.
 
 Ahora, supongamos que el precio del BTC aumenta un 10%. Es decir, ahora 1 BTC = 110,000 DAI Veamos cómo queda la estructura contable después de este cambio de precio.
 
@@ -35,7 +35,7 @@ Ahora, supongamos que el precio del BTC aumenta un 10%. Es decir, ahora 1 BTC = 
 
 Observe cómo solo necesitamos realizar cambios en la estructura contable cuando Alice realiza una acción, como abrir o cerrar una posición.
 
-### El Esquema (corto perpetuo)
+### El Esquema (corto perpetual)
 Klyra utiliza una estructura contable similar para rastrear posiciones cortas, pero de manera inversa. Utilicemos el mismo ejemplo, pero esta vez con Bob, quien cree que el precio de BTC disminuirá. Por lo tanto, decide abrir una posición corta de BTC con un apalancamiento de 10x. Tiene un capital inicial de 1,000 DAI y 1 BTC = 10,000 DAI. Primero, como Alice, Bob necesita depositar sus DAI en Klyra.
 
 ![Bob deposit img](../../../../../static/img/bob-deposit-dark.png)
@@ -49,6 +49,6 @@ Ahora, a diferencia del ejemplo de Alice, supongamos que el precio del BTC dismi
 ![Bob profit img](../../../../../static/img/bob-profit-dark.png)
 
 ### Subcuentas
-Un detalle que se omite en los ejemplos anteriores es el concepto de subcuentas de Klyra. A nivel de blockchain, un par de clave privada/pública está asociado a una cuenta, pero todas las cuentas pueden tener hasta 128,000 subcuentas. Los activos y los perpetuos se rastrean por subcuenta. Los cuadros en los ejemplos anteriores representan una sola subcuenta de Alice y Bob, respectivamente.
+Un detalle que se omite en los ejemplos anteriores es el concepto de subcuentas de Klyra. A nivel de blockchain, un par de clave privada/pública está asociado a una cuenta, pero todas las cuentas pueden tener hasta 128,000 subcuentas. Los activos y los perpetuals se rastrean por subcuenta. Los cuadros en los ejemplos anteriores representan una sola subcuenta de Alice y Bob, respectivamente.
 
 Las subcuentas son útiles para los traders por muchas razones, siendo la principal la gestión de riesgos. Dado que cada subcuenta tiene su propio colateral y posiciones perpetuas, el riesgo se puede evaluar por subcuenta. Por ejemplo, supongamos que Alice tiene una posición larga de BTC pequeña y estable con apalancamiento de 3x en la subcuenta 1. Alice luego se vuelve optimista sobre una memecoin y quiere abrir una posición larga. Sin embargo, no quiere que esta posición afecte la salud de su posición de BTC si las cosas no salen bien. Alice puede transferir algo de colateral a la subcuenta 2 y abrir la posición larga de memecoin allí. Si la operación va mal, es posible que su subcuenta 2 sea liquidada, pero su posición larga de BTC permanecerá intacta.

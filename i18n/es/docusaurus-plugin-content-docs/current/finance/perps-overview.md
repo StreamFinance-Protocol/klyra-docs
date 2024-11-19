@@ -6,15 +6,15 @@ description: ¿Qué son los contratos perpetuals?
 # Introducción a los Perpetuals
 
 ## Introductoria
-Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al contado y productos derivados.
+Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al spot y productos derivados.
 
-### Productos al Contado
-Los productos al contado tratan con el activo subyacente real: cuando posees un producto al contado, posees el activo en sí. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
+### Productos al Spot
+Los productos al spot tratan con el activo subyacente real: cuando posees un producto al spot, posees el activo en sí. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
 
 ### Productos Derivados
 Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de \$100 en el precio de BTC, Bob le pagará a Alice \$500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
 
-Un derivado común es un Contrato de Futuros Perpetuos (o "perp" para abreviar). Los Perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
+Un derivado común es un Contrato de Futuros perpetuals (o "perp" para abreviar). Los Perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
 
 1. **Larga**: El operador obtiene ganancias cuando el precio del activo subyacente aumenta.
 2. **Corta**: El operador obtiene ganancias cuando el precio del activo subyacente disminuye.
@@ -54,7 +54,7 @@ La magnitud de la tasa de financiamiento crece con la desviación entre el preci
 Para detalles sobre cómo se calculan las tasas de financiamiento, consulta [aquí](./funding-rates.md). Por ahora, entiende las tasas de financiamiento como un mecanismo que mantiene el precio del perp estrechamente vinculado al activo subyacente.
 
 ### Colateral
-El colateral (a veces también llamado margen) es el capital que un operador deposita para respaldar sus posiciones en un intercambio perpetuo. Determina el poder de compra de un operador, que es un múltiplo de la cantidad de colateral según el apalancamiento. Por ejemplo, con un apalancamiento de 10x, un operador puede controlar una posición que vale 10 veces su colateral.
+El colateral (a veces también llamado margen) es el capital que un operador deposita para respaldar sus posiciones en un intercambio perpetual. Determina el poder de compra de un operador, que es un múltiplo de la cantidad de colateral según el apalancamiento. Por ejemplo, con un apalancamiento de 10x, un operador puede controlar una posición que vale 10 veces su colateral.
 
 Por qué el Colateral es Importante:
 - El colateral asegura que un operador que incurre en pérdidas (también llamadas PNL negativa, que significa "ganancias y pérdidas") tenga suficientes fondos para cubrir las ganancias de su contraparte. En una operación, las contrapartes (por ejemplo, Alice y Bob, uno largo y uno corto) efectivamente "ganan" o "pierden" el colateral del otro según el movimiento del precio.

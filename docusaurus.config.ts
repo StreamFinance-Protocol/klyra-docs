@@ -79,7 +79,8 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'Klyra',
-        src: 'img/klyra-logo.svg',
+        src: "img/klyra-logo.svg",
+        srcDark: "img/klyra-logo-white.svg",
       },
       items: [
         {
