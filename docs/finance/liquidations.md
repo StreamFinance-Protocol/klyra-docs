@@ -57,11 +57,26 @@ To maintain system stability during periods of low market liquidity:
 - Deleveraging: In rare cases where liquidation cannot be completed successfully, a deleveraging mechanism is triggered. This mechanism forcefully closes the unhealthy account by offsetting its positions against randomly selected accounts with opposing positions. Deleveraging is a last resort and is designed to be an extremely rare occurrence. When triggered, the system halts the opening of new positions to protect the ecosystem and traders.
 
 ### Liquidation Price
-When liquidating an account's perp position, a minimum price must be determined to place the order on the orderbook. This is the worst price at which the order can be executed. To determine the liquidation price, Klyra uses the most aggressive price between the bankruptcy price and the fillable price. 
+When liquidating an account’s perp position, a minimum price must be determined to place the order on the orderbook. This is the worst price at which the order can be executed. To determine the liquidation price, Klyra uses the most aggressive price between the fillable price and the bankruptcy price. The fillable price varies depending on the health of the account; the worse the health, the higher the delta between the oracle price and the fillable price. The bankruptcy price is the price at which if the liquidation is matched will result in an account balance of zero (i.e all collateral is wiped out). This means that when the account is barely liquidatable Klyra will use the bankruptcy price to maximize the chance that the account gets liquidated (this is a safety mechanism). When the account is very close to bankruptcy Klyra will use the fillable price to allow for more potential orders that can match with the insurance fund covering. This is designed to maximize the likelihood of a successful liquidation. Below is the formula used to calculate each of these respective prices.
 
-The bankruptcy price is the price at which the liquidation, if matched, will result in an account balance of zero (i.e., all collateral is wiped out). The fillable price varies depending on the health of the account—the worse the health, the higher the delta between the oracle price and the fillable price. 
+#### Fillable Price
+`fillable price = (PNNV - ABR * SMMR * PMMR) / PS`
 
-When an account is barely liquidatable, Klyra will use the bankruptcy price to maximize the chance that the account gets liquidated (this is a safety mechanism). When the account is very close to bankruptcy, Klyra will use the fillable price to allow for more potential orders that can match, with the insurance fund covering any shortfall. This approach is designed to maximize the likelihood of a successful liquidation. Below are the formulas used to calculate each of these respective prices.
+- PNNV is the position net notional value
+
+- ABR (adjusted bankruptcy rate) is BA * (1 - (TNC / TMMR))
+
+- BA: bankruptcy adjustment in parts per million (this is a constant set in the configuration of the chain that can be changed by a governance vote)
+
+- SMMR: spread to maintenance margin ratio (this is a constant set in the configuration of the chain that can be changed by a governance vote)
+
+- PMMR: position maintenance margin requirement
+
+To intuitively understand the formula for the fillable price, we can simplify the formula and set constants to default values, to get the following:
+
+`fillable price = Network Price * (TNC / TMMR)`
+
+As mentioned above, liquidations are triggered when `TNC = TMMR`, so at that point the fillable price will be the oracle price - ie. we try to close the unhealthy positions at the current price (with no discount). If the price continues to move against the trader, and their TNC continues to drop, `TNC / TMMR` becomes less than 1 which means we start trying to sell the position at a discount, effectively providing additional incentive for someone to buy the position.
 
 #### Bankruptcy Price
 `bankruptcy price = (-DNNV - (TNC * (abs(DMMR) / TMMR))) / PS`
@@ -85,15 +100,4 @@ where PMMRAD is the position margin requirement after delta. This value measures
 
 - Delta: refers to the change in position size due to the liquidation order being matched.
 
-#### Fillable Price
-`fillable price = (PNNV - ABR * SMMR * PMMR) / PS`
-
-- PNNV is the position net notional value.
-
-- ABR (adjusted bankruptcy rate) is BA * (1 - (TNC / TMMR)).
-
-- BA: bankruptcy adjustment in parts per million (this is a constant set in the configuration of the chain that can be changed by a governance vote).
-
-- SMMR: spread to maintenance margin ratio (this is a constant set in the configuration of the chain that can be changed by a governance vote).
-
-- PMMR: position maintenance margin requirement.
+Unfortunately, the formula for the bankruptcy price cannot be simplified into an intuitive formula like the fillable price. However, the idea remains intuitive, if a user were to close all their positions at the bankruptcy price (for each position), their account would be worth 0. This can be thought of as the breakeven price, if a perpetual is closed below the bankruptcy price, the insurance fund will need to intervene.

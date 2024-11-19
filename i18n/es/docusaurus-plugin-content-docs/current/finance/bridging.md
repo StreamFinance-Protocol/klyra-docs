@@ -5,7 +5,7 @@ description: ¿Cómo deposita y retira dinero en Klyra?
 
 # Bridging
 
-## Introductoria
+## Introducción
 Inicialmente, Klyra se lanzará con un puente hacia Ethereum, permitiendo a los usuarios transferir fondos de manera segura entre ambas redes. Cuando los usuarios envían fondos a un contrato inteligente en Ethereum, la cantidad equivalente se acredita en su cuenta de Klyra. De manera similar, cuando los usuarios retiran fondos de Klyra, los fondos se liberan en Ethereum. Este sistema asegura que los activos totales en Klyra siempre coincidan con los activos totales en el contrato inteligente de Ethereum, proporcionando transferencias seguras y confiables entre ambas redes.
 
 ## Avanzada

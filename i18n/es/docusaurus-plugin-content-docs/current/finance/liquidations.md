@@ -7,7 +7,7 @@ description: ¿Qué son las liquidaciones?
 
 ![Liquidation diagram](../../../../../static/img/liquidation-diagram.png)
 
-## Introductoria
+## Introducción
 Las liquidaciones son un mecanismo de seguridad de Klyra para asegurar que ninguna cuenta de trader llegue a valores negativos. Como se menciona en la [descripción general](../overview.md), la pérdida de un trader es la ganancia de otro trader. Por lo tanto, si una cuenta está en negativo, entonces algún otro trader tiene ganancias que Klyra no puede pagar. En finanzas, esto se llamaría una plataforma insolvente, y es lo peor que puede suceder a una plataforma financiera.
 
 Cada operación que un trader abre, otro trader está en el lado opuesto. Por ejemplo, si Alice toma una posición larga de 1 BTC, entonces Bob (u otro trader) tiene una posición corta de 1 BTC. Digamos que el precio de BTC sube, y Bob comienza a perder mucho dinero, hasta el punto en que sus pérdidas son iguales a su [garantía](./collateral-pools.md), es decir, el valor de su cuenta es cero. En este punto, lo más simple que Klyra podría hacer es forzar el cierre de la posición tanto para Alice como para Bob. Ahora Klyra puede asegurarse de que ninguna cuenta puede tener un valor negativo porque fuerza el cierre de todas sus posiciones.
@@ -54,7 +54,26 @@ Para mantener la estabilidad del sistema durante períodos de baja liquidez en e
 - Desapalancmiento: En casos raros en los que la liquidación no pueda completarse con éxito, se activa un mecanismo de desapalancamiento. Este mecanismo cierra de manera forzada la cuenta insalubre compensando sus posiciones contra cuentas seleccionadas aleatoriamente con posiciones opuestas. El desapalancamiento es un último recurso y está diseñado para ser una ocurrencia extremadamente rara. Si se activa, el sistema detiene la apertura de nuevas posiciones para proteger el ecosistema y los traders.
 
 ### Precio de Liquidación
-Cuando se liquida la posición de un contrato perpetual de una cuenta, debe determinarse un precio mínimo para colocar la orden en el libro de órdenes. Este es el peor precio en el que la orden puede ejecutarse. Para determinar el precio de liquidación, Klyra utiliza el precio más agresivo entre el precio de quiebra y el precio llenable. El precio de quiebra es el precio al cual, si la liquidación se empareja, resultará en un saldo de cuenta igual a cero (es decir, todo el colateral se elimina). El precio llenable varía dependiendo de la salud de la cuenta; mientras peor sea la salud, mayor será el delta entre el precio del oráculo y el precio llenable. Esto significa que cuando la cuenta está casi liquidable, Klyra utilizará el precio de quiebra para maximizar la posibilidad de que la cuenta se liquide (esto es un mecanismo de seguridad). Cuando la cuenta está muy cerca de la quiebra, Klyra utilizará el precio llenable para permitir más órdenes potenciales que puedan coincidir con la cobertura del fondo de seguro. Esto está diseñado para maximizar la probabilidad de una liquidación exitosa. A continuación se muestra la fórmula utilizada para calcular cada uno de estos precios respectivos.
+Cuando se liquida la posición de un contrato perpetual de una cuenta, debe determinarse un precio mínimo para colocar la orden en el libro de órdenes. Este es el peor precio en el que la orden puede ejecutarse. Para determinar el precio de liquidación, Klyra utiliza el precio más agresivo entre el precio de llenable y el precio quiebra. El precio llenable varía dependiendo de la salud de la cuenta; mientras peor sea la salud, mayor será el delta entre el precio del oráculo y el precio llenable. El precio de quiebra es el precio al cual, si la liquidación se empareja, resultará en un saldo de cuenta igual a cero (es decir, todo el colateral se elimina). Esto significa que cuando la cuenta está casi liquidable, Klyra utilizará el precio de quiebra para maximizar la posibilidad de que la cuenta se liquide (esto es un mecanismo de seguridad). Cuando la cuenta está muy cerca de la quiebra, Klyra utilizará el precio llenable para permitir más órdenes potenciales que puedan coincidir con la cobertura del fondo de seguro. Esto está diseñado para maximizar la probabilidad de una liquidación exitosa. A continuación se muestra la fórmula utilizada para calcular cada uno de estos precios respectivos.
+
+#### Precio Llenable
+`precio_llenable = (PNNV - ABR * SMMR * PMMR) / PS`
+
+- PNNV es el valor nocional neto de la posición
+
+- ABR (tasa de quiebra ajustada) es BA * (1 - (TNC / TMMR))
+
+- BA: ajuste de quiebra en partes por millón (este es un valor constante establecido en la configuración de la cadena que puede cambiarse mediante una votación de gobernanza)
+
+- SMMR: ratio de margen de mantenimiento (este es un valor constante establecido en la configuración de la cadena que puede cambiarse mediante una votación de gobernanza)
+
+- PMMR: requisito de margen de mantenimiento de la posición
+
+Para entender intuitivamente la fórmula del precio llenable, podemos simplificar la fórmula y establecer las constantes a valores predeterminados, obteniendo lo siguiente:
+
+`precio_llenable = Precio_de_Red * (TNC / TMMR)`
+
+Como se mencionó anteriormente, las liquidaciones se activan cuando `TNC = TMMR`, por lo que en ese punto el precio llenable será el precio del oráculo - es decir, intentamos cerrar las posiciones insalubres al precio actual (sin descuento). Si el precio continúa moviéndose en contra del trader, y su TNC continúa bajando, `TNC / TMMR` se vuelve menor que 1, lo que significa que comenzamos a intentar vender la posición con descuento, proporcionando efectivamente un incentivo adicional para que alguien compre la posición.
 
 #### Precio de Quiebra
 `precio_quiebra = (-DNNV - (TNC * (abs(DMMR) / TMMR))) / PS`
@@ -77,15 +96,4 @@ Cuando se liquida la posición de un contrato perpetual de una cuenta, debe dete
 
 - Delta: se refiere al cambio en el tamaño de la posición debido a que se empareja la orden de liquidación.
 
-#### Precio Llenable
-`precio_llenable = (PNNV - ABR * SMMR * PMMR) / PS`
-
-- PNNV es el valor nocional neto de la posición
-
-- ABR (tasa de quiebra ajustada) es BA * (1 - (TNC / TMMR))
-
-- BA: ajuste de quiebra en partes por millón (este es un valor constante establecido en la configuración de la cadena que puede cambiarse mediante una votación de gobernanza)
-
-- SMMR: ratio de margen de mantenimiento (este es un valor constante establecido en la configuración de la cadena que puede cambiarse mediante una votación de gobernanza)
-
-- PMMR: requisito de margen de mantenimiento de la posición
+Desafortunadamente, la fórmula del precio de quiebra no puede simplificarse en una fórmula intuitiva como la del precio llenable. Sin embargo, la idea sigue siendo intuitiva: si un usuario cerrara todas sus posiciones al precio de quiebra (para cada posición), su cuenta valdría 0. Esto puede considerarse como el precio de equilibrio; si un perpetual se cierra por debajo del precio de quiebra, el fondo de seguro necesitará intervenir.

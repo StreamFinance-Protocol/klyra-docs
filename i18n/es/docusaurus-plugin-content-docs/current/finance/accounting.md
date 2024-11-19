@@ -5,7 +5,7 @@ description: ¿Cómo se realiza la contabilidad en Klyra?
 
 # Contabilidad
 
-## Introductoria
+## Introducción
 Una pieza central de la infraestructura de Klyra es llevar un registro de qué cuentas tienen qué posiciones. Para el primer producto financiero de Klyra, perpetuals, se utiliza un mecanismo de contabilidad eficiente que rastrea el valor neto de una cuenta considerando todas sus posiciones perpetuals, ya sea que el trader esté en largo, corto o ambas posiciones en diferentes mercados perpetuals.
 
 ## Avanzada

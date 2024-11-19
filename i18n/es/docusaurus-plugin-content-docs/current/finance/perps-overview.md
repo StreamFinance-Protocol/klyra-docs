@@ -5,7 +5,7 @@ description: ¿Qué son los contratos perpetuals?
 
 # Introducción a los Perpetuals
 
-## Introductoria
+## Introducción
 Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al spot y productos derivados.
 
 ### Productos al Spot

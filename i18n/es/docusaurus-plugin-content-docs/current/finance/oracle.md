@@ -5,7 +5,7 @@ description: ¿Cómo funciona el oráculo de Klyra?
 
 # Oráculo
 
-## Introductoria
+## Introducción
 Klyra actualiza los precios del mercado cada segundo combinando datos de los validadores para garantizar precisión y equidad. Cada validador recopila precios de múltiples fuentes, calcula un precio confiable tomando la mediana y lo comparte con el grupo. El precio final se determina tomando la mediana de todas las sugerencias de los validadores, asegurando que ninguna fuente o validador pueda influir demasiado en el resultado. Este proceso filtra los datos incorrectos y proporciona una forma rápida, segura y confiable de mantener los precios actualizados para el mercado.
 
 ## Avanzada
