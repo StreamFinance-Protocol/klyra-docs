@@ -5,6 +5,8 @@ description: What are funding rates?
 
 # Funding Rates
 
+![funding payment diagram](../../static/img/funding-diagram.png)
+
 ## Introductory
 Funding rates help keep the price of a perpetual contract in line with the price of the actual asset it represents. They work by making small payments between traders depending on whether the perpetual price is higher or lower than the real asset price. When the perpetual price deviates from the underlying asset's price, traders are incentivized to act because they can profit from the difference. If the price is too high, selling the perpetual while buying the underlying asset locks in a profit as the prices converge. If the price is too low, buying the perpetual and selling the underlying asset achieves the same. These arbitrage opportunities naturally drive the perpetual price back in line with the underlying asset. This system adjusts continuously based on how far the prices are apart, ensuring they stay closely aligned. On Klyra, this adjustment happens every hour.
 

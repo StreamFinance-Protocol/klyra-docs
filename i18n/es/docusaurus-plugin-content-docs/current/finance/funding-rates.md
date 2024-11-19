@@ -5,6 +5,8 @@ description: ¿Qué son las funding rates?
 
 # Funding Rates
 
+![funding payment diagram](../../../../../static/img/funding-diagram.png)
+
 ## Introductoria
 Las funding rates ayudan a mantener el precio de un contrato perpetuo alineado con el precio del activo real que representa. Funcionan mediante pequeños pagos entre los traders dependiendo de si el precio perpetuo es más alto o más bajo que el precio del activo real. Cuando el precio perpetuo se desvía del precio del activo subyacente, los traders se ven incentivados a actuar porque pueden obtener ganancias de la diferencia. Si el precio es demasiado alto, vender el contrato perpetuo mientras se compra el activo subyacente asegura una ganancia a medida que los precios se convergen. Si el precio es demasiado bajo, comprar el contrato perpetuo y vender el activo subyacente logra lo mismo. Estas oportunidades de arbitraje naturalmente empujan el precio perpetuo de vuelta a la paridad con el activo subyacente. Este sistema se ajusta continuamente según la diferencia entre los precios, asegurando que se mantengan estrechamente alineados. En Klyra, este ajuste ocurre cada hora.
 
