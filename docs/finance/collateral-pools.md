@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
-description: What are collateral pools?
+description: How does Klyra manage risk?
 ---
 
-# Collateral Pools
+# Collateral
 
 ## Introductory
 Collateral (or margin) is the capital a trader deposits to support their positions on Klyra. It ensures that traders who incur losses have enough funds to cover their counterparty's profits. Collateral maintains the integrity of the trading system by ensuring that both parties in a trade can fulfill their obligations, aligning risk with the size of the position and preventing scenarios where a trader's losses exceed her available funds.
