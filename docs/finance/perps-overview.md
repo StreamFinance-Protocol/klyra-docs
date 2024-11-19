@@ -13,7 +13,7 @@ Financial products can fundamentally be divided into two broad categories: spot 
 Spot products deal with the actual underlying asset - when you own a spot product, you own the asset itself. The simplest example is a swap between two assets: if I have BTC and want USDC, I own the actual BTC before the swap and the actual USDC after.
 
 ### Derivative Products
-Derivative products are financial tools that derive their value from an underlying asset without requiring ownership of it. When you own a derivative product you don’t own the underlying asset. Derivatives are structured as a mutual agreement between two parties. For example, let's say Alice thinks the price of BTC will rise and Bob thinks it will fall. Alice and Bob agree that for every $100 price increase in BTC, Bob will pay Alice $500 (and vice versa if the price falls). This contract derives its value from BTC's price but doesn't involve owning any BTC.
+Derivative products are financial tools that derive their value from an underlying asset without requiring ownership of it. When you own a derivative product you don’t own the underlying asset. Derivatives are structured as a mutual agreement between two parties. For example, let's say Alice thinks the price of BTC will rise and Bob thinks it will fall. Alice and Bob agree that for every \$100 price increase in BTC, Bob will pay Alice \$500 (and vice versa if the price falls). This contract derives its value from BTC's price but doesn't involve owning any BTC.
 
 A common derivative is a Perpetual Futures Contract (or "perp" for short). Perps allow traders to use leverage, meaning they can control a larger position than their available capital would normally allow. When trading a perp, a trader can either be long or short:
 
@@ -21,12 +21,12 @@ A common derivative is a Perpetual Futures Contract (or "perp" for short). Perps
 2. **Short**: The trader profits when the underlying asset's price decreases. 
 
 ### Perp Example
-Let's say you have $1,000. With a perp, you can control $10,000 worth of BTC using just your $1,000. This is called "10x leverage" because your trading power is multiplied by 10.
+Let's say you have \$1,000. With a perp, you can control \$10,000 worth of BTC using just your \$1,000. This is called "10x leverage" because your trading power is multiplied by 10.
 
 Here's how it works:
-- If BTC's price rises from $50,000 to $55,000 (a 10% increase):
-  - With a perp: Your $10,000 position gains $1,000 (10% of $10,000)
-  - With spot: Your $1,000 of BTC would only gain $100 (10% of $1,000)
+- If BTC's price rises from \$50,000 to \$55,000 (a 10% increase):
+  - With a perp: Your \$10,000 position gains \$1,000 (10% of \$10,000)
+  - With spot: Your \$1,000 of BTC would only gain \$100 (10% of \$1,000)
 
 This shows how perps can multiply both profits AND losses by your leverage amount (10x in this example). This makes perps higher risk but potentially higher reward than buying the asset directly.
 
@@ -43,10 +43,10 @@ How It Works:
 - If the perp price is **below** the underlying price, short traders pay funding to long traders.
 
 The funding rate therefore creates incentives to correct the perp price:
-- If the perp price is **higher** than the underlying asset's price, shorts earn funding and longs pay funding. This incentivizes traders to:
+- If the perp price is **above** than the underlying asset's price, shorts earn funding and longs pay funding. This incentivizes traders to:
   1. Open short positions (driving the price down)
   2. Close long positions (further driving the price down)
-- If the perp price is **lower** than the underlying asset's price, longs earn funding and shorts pay funding. This incentivizes traders to:
+- If the perp price is **below** than the underlying asset's price, longs earn funding and shorts pay funding. This incentivizes traders to:
   1. Open long positions (driving the price up)
   2. Close short positions (further driving the price up)
 
@@ -72,6 +72,6 @@ Alice and Bob open a perp against each other with Alice long BTC and Bob short B
 
 However, this creates a poor user experience for Alice: What if she didn't want to close her position? This is why Klyra implements liquidations, which transfer Bob's position to a new trader. Instead of closing Alice's position, she gets a new counterparty while only Bob is forced out (since he has no more collateral to cover potential losses).
 
-Liquidations ensure exchange solvency by preventing negative collateral. If a trader had negative collateral, their counterparty would have profits that couldn't be paid out. A key invariant of Klyra is that total net PNL must be zero (i.e., if someone makes $X, another trader must lose $X). To prevent negative collateral scenarios, liquidations occur slightly before a trader's collateral reaches zero, giving the exchange time to find a new counterparty.
+Liquidations ensure exchange solvency by preventing negative collateral. If a trader had negative collateral, their counterparty would have profits that couldn't be paid out. A key invariant of Klyra is that total net PNL must be zero (i.e., if someone makes \$X, another trader must lose \$X). To prevent negative collateral scenarios, liquidations occur slightly before a trader's collateral reaches zero, giving the exchange time to find a new counterparty.
 
 Find exactly how liquidations work on Klyra [here](./liquidations.md).

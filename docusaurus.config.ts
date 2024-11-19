@@ -29,10 +29,19 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-GB',
+      },
+      // You can omit a locale (e.g. fr) if you don't need to override the defaults
+      es: {
+        direction: "ltr"
+      },
+    },
   },
 
-   plugins: ['docusaurus-lunr-search'],
+  plugins: ['docusaurus-lunr-search'],
 
   presets: [
     [
@@ -83,6 +92,10 @@ const config: Config = {
         {
           href: 'https://github.com/StreamFinance-Protocol',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],

@@ -5,6 +5,8 @@ description: What are funding rates?
 
 # Funding Rates
 
+![funding payment diagram](../../static/img/funding-diagram.png)
+
 ## Introductory
 Funding rates help keep the price of a perpetual contract in line with the price of the actual asset it represents. They are periodic payments between long and short traders, based on the difference between the perp price and the [oracle-reported](./oracle.md) price of the underlying asset.
 
