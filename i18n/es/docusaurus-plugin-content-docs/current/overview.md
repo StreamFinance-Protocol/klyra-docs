@@ -3,10 +3,17 @@ sidebar_position: 1
 ---
 
 # Introducción
-¡Bienvenido a la Documentación de **Klyra**!
 
-Estos documentos están en progreso y sirven como base para nuestra base de conocimientos. Actualmente, el enfoque está en la sección de **Finanzas**, proporcionando información detallada sobre nuestros primitivos financieros y mecanismos.
+**Infraestructura abierta para exchanges**
 
-Estamos emocionados de compartir que esto es solo el comienzo. Nuestro equipo está trabajando activamente en expandir estos documentos para incluir una sección completa de **Infraestructura**, que profundizará en la columna vertebral técnica de Klyra, incluyendo la arquitectura, el diseño del sistema y detalles operativos.
+:::note
+Estos documentos están incompletos y solo sirven como una introducción a los conceptos financieros detrás de Klyra. Planeamos expandirlos en un futuro próximo. Si tienes algún comentario, ¡contáctanos!
+:::
 
-Tus comentarios y sugerencias son invaluables para nosotros mientras seguimos construyendo y perfeccionando este recurso. Si tienes sugerencias o encuentras áreas de mejora, no dudes en contactarnos—¡nos encantaría saber tu opinión!
+## ¿Qué es Klyra?
+Klyra es la infraestructura financiera base para una variedad de participantes: traders, creadores de mercado, exchanges y desarrolladores. Klyra proporciona los rieles que conectan a estos participantes principales en un sistema robusto y descentralizado. Klyra permite que los mercados globales 24/7 impulsen los límites de un sistema financiero creíblemente neutral.
+
+## Casos de Uso
+- **un derivado, múltiples plataformas**: como trader, utiliza diferentes funcionalidades de distintos exchanges mientras interactúas con la misma posición en derivados
+- **nuevos productos, sin complicaciones**: para exchanges, lanza nuevos productos financieros a tus usuarios sin necesidad de buscar liquidez ni construir infraestructura base
+- **extensiones de código plug-in**: para desarrolladores, construye funcionalidades personalizadas que se integran directamente en la infraestructura principal. Imagina si pudieras escribir nuevas funcionalidades sin permisos en la Bolsa de Nueva York
