@@ -5,7 +5,7 @@ description: ¿Qué son las tasas de financiamiento?
 
 # Tasas de Financiamiento
 
-![funding payment diagram](../../../../../static/img/funding-diagram.png)
+![funding payment diagram](../../../../../static/img/funding-diagram-spanish.png)
 
 ## Introducción
 Las tasas de financiamiento ayudan a mantener el precio de un contrato perpetual alineado con el precio del activo real que representa. Son pagos periódicos entre traders en posiciones largas y cortas, basados en la diferencia entre el precio del perpetual y el precio del activo subyacente [reportado por el oráculo](./oracle.md).
