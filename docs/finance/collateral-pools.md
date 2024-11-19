@@ -6,7 +6,7 @@ description: What are collateral pools?
 # Collateral Pools
 
 ## Introductory
-Collateral (or margin) is the capital a trader deposits to support their positions in a perpetual exchange. It ensures that traders who incur losses have enough funds to cover their counterparty's profits. Collateral maintains the integrity of the trading system by ensuring that both parties in a trade can fulfill their obligations, aligning risk with the size of the position and preventing scenarios where one trader's losses exceed their available funds.
+Collateral (or margin) is the capital a trader deposits to support their positions on Klyra. It ensures that traders who incur losses have enough funds to cover their counterparty's profits. Collateral maintains the integrity of the trading system by ensuring that both parties in a trade can fulfill their obligations, aligning risk with the size of the position and preventing scenarios where one trader's losses exceed their available funds.
 
 A natural question arises: What type of collateral should a perpetual support? Imagine two traders wish to trade with different collaterals and refuse to accept anything else, then they cannot trade against each other because there would be no way to pay profits and losses to the other. In other words, the only way for two traders with different collateral to trade with each other is if they are willing to accept the other trader's collateral. In general, this is an assumption that is untrue, a trader may only trust USDC and BTC and not want to trade with someone using Dogecoin. However, we want Klyra to allow a user that wishes to trade with Dogecoin collateral to do so. 
 

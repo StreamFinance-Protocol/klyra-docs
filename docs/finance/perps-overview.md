@@ -55,7 +55,7 @@ The magnitude of the funding rate grows with the deviation between the perp and 
 For details on funding rate calculations, see [here](./funding-rates.md). For now, understand funding rates as a mechanism that keeps the perp price closely tied to the underlying asset.
 
 ### Collateral
-Collateral (sometimes also called margin) is the capital a trader deposits to back their positions on a perpetual exchange. It determines a trader's buying power, which is a multiple of the collateral amount based on leverage. For example, with 10x leverage, a trader can control a position worth 10 times their collateral.
+Collateral (sometimes also called margin) is the capital a trader deposits to back their positions on Klyra. It determines a trader's buying power, which is a multiple of the collateral amount based on leverage. For example, with 10x leverage, a trader can control a position worth 10 times their collateral.
 
 Why Collateral Is Important:
 - Collateral ensures that a trader who incurs losses (also called negative PNL, which stands for "profits and losses") has enough funds to cover the profits of their counterparty. In a trade, counterparties (e.g., Alice and Bob, one long and one short) effectively "win" or "lose" each other’s collateral based on the price movement.
@@ -72,6 +72,6 @@ Alice and Bob open a perp against each other with Alice long BTC and Bob short B
 
 However, this creates a poor user experience for Alice: What if she didn't want to close her position? This is why Klyra implements liquidations, which transfer Bob's position to a new trader. Instead of closing Alice's position, she gets a new counterparty while only Bob is forced out (since he has no more collateral to cover potential losses).
 
-Liquidations ensure exchange solvency by preventing negative collateral. If a trader had negative collateral, their counterparty would have profits that couldn't be paid out. A key invariant of Klyra is that total net PNL must be zero (i.e., if someone makes \$X, another trader must lose \$X). To prevent negative collateral scenarios, liquidations occur slightly before a trader's collateral reaches zero, giving the exchange time to find a new counterparty.
+Liquidations ensure Klyra remains solvent by preventing negative collateral. If a trader had negative collateral, their counterparty would have profits that couldn't be paid out. A key invariant of Klyra is that total net PNL must be zero (i.e., if someone makes \$X, another trader must lose \$X). To prevent negative collateral scenarios, liquidations occur slightly before a trader's collateral reaches zero, giving Klyra time to find a new counterparty.
 
 Find exactly how liquidations work on Klyra [here](./liquidations.md).
