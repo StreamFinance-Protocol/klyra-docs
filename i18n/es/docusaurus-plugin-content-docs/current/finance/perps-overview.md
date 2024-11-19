@@ -4,6 +4,7 @@ description: ¿Qué son los contratos perpetuals?
 ---
 
 # Introducción a los Perpetuals
+Una introducción a cómo funcionan los contratos perpetuals en la práctica.
 
 ## Introducción
 Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al spot y productos derivados.
@@ -14,7 +15,7 @@ Los productos al spot tratan con el activo subyacente real: cuando posees un pro
 ### Productos Derivados
 Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de \$100 en el precio de BTC, Bob le pagará a Alice \$500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
 
-Un derivado común es un Contrato de Futuros perpetuals (o "perp" para abreviar). Los Perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
+Un derivado común es un Contrato de Futuros Perpetuals (o "perp" para abreviar). Los perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
 
 1. **Larga**: El operador obtiene ganancias cuando el precio del activo subyacente aumenta.
 2. **Corta**: El operador obtiene ganancias cuando el precio del activo subyacente disminuye.
