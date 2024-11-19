@@ -10,7 +10,7 @@ A core piece of Klyra’s infrastructure is keeping track of which accounts hold
 
 ## Advanced
 
-### The Scheme (long perp)
+### Long Perp Scheme
 Klyra’s account structure can best be thought of as containing two sections: assets and perps.
 
 ![Alice blank img](../../static/img/alice-blank-dark.png)
@@ -38,7 +38,7 @@ Nothing changed! The efficient outcome about this accounting scheme is no change
 
 Notice how we only have to make changes to the accounting structure when Alice takes an action like placing or closing a position.
 
-### The Scheme (short perp)
+### Short Perp Scheme
 Klyra uses a similar accounting structure for tracking short positions, but in reverse. Let’s use the same example. This time, however, we have Bob who thinks the price of BTC will go down. He consequently decides to short BTC with 10x leverage. He has 1,000 DAI initial capital and 1 BTC = 10,000 DAI. First, like Alice, Bob needs to deposit his DAI into Klyra.
 
 ![Bob deposit img](../../static/img/bob-deposit-dark.png)
@@ -54,6 +54,6 @@ Now, unlike the Alice example, let’s assume the BTC price moves down 10% resul
 
 
 ### Subaccounts
-One detail abstracted away in the above examples is Klyra’s concept of subaccounts. On a chain level, a private/public key pair is associated with an account, but all accounts can have up to 127,000 subaccounts. The assets and perps are tracked on a per subaccount basis. The squares in the above examples actually represent a single subaccount of Alice and Bob respectively! 
+One detail abstracted away in the above examples is Klyra’s concept of subaccounts. On a chain level, a private/public key pair is associated with an account, but all accounts can have up to 128,000 subaccounts. The assets and perps are tracked on a per subaccount basis. The squares in the above examples actually represent a single subaccount of Alice and Bob respectively! 
 
 Subaccounts are useful to traders for many reasons with the main one being risk management. Because each subaccount has its own collateral and perp positions, risk can be evaluated on a per-subaccount basis. For example, say Alice has  a small and stable 3x BTC long in subaccount 1. Alice then becomes bullish on a longtail memecoin that she also wants to long. However she doesn’t want her memecoin long to affect the health of her BTC position if it doesn’t go well. Alice can transfer some collateral into subaccount 2 and open the memecoin long on subaccount 2. If the trade goes poorly, it’s possible her subaccount 2 gets liquidated, but her BTC long position remains unaffected. 
