@@ -20,7 +20,11 @@ En esencia, las liquidaciones actúan como una red de seguridad para Klyra, aseg
 Liquidación es el proceso de cerrar de manera forzada la posición de un trader en el libro de órdenes. Esto ocurre cuando el saldo de la cuenta del trader, incluyendo el colateral y las ganancias o pérdidas no realizadas, cae por debajo del requisito de margen de mantenimiento. Durante la liquidación, el sistema empareja la posición del trader con órdenes contrarias en el mercado, vendiendo o comprando efectivamente la posición para devolver la cuenta a la conformidad o cerrarla por completo. Si la liquidez es insuficiente o el precio de liquidación resulta en un saldo negativo, se emplean mecanismos adicionales, como fondos de seguro o desapalancamiento, para gestionar los riesgos.
 
 ### Margen de Mantenimiento y Condiciones de Liquidación
-Una tasa de margen de mantenimiento perpetual es el colateral mínimo que un trader debe mantener para mantener una posición abierta. Esta tasa, que normalmente está entre el 1% y el 10% del tamaño de la posición, varía según los parámetros de riesgo específicos de la plataforma. Una cuenta se considera liquidable cuando su valor (incluyendo ganancias y pérdidas) cae por debajo del requisito de margen de mantenimiento.
+El margen de mantenimiento perpetuo es el colateral mínimo que un trader debe mantener para mantener una posición abierta. Se calcula utilizando la fórmula:
+
+`margen_de_mantenimiento = tamaño_de_posición * tasa_de_margen_de_mantenimiento`
+
+Vemos que el margen de mantenimiento depende tanto del tamaño de la posición (apalancamiento) como de la tasa de margen de mantenimiento. Esta tasa, típicamente entre 1-10%, varía según los parámetros de riesgo específicos de la plataforma. Una cuenta se considera liquidable cuando su valor (incluyendo ganancias y pérdidas) cae por debajo del requisito de margen de mantenimiento.
 
 Cada bloque, el sistema identifica todas las cuentas con posiciones liquidables. Sin embargo, dado que el número de transacciones por bloque está limitado, no todas las posiciones pueden ser liquidadas de inmediato. Para abordar esto, el sistema emplea un mecanismo de prioridad para determinar qué cuentas se liquidan primero, en función de su nivel de riesgo.
 

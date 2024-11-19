@@ -21,7 +21,7 @@ A common derivative is a Perpetual Futures Contract (or "perp" for short). Perps
 2. **Short**: The trader profits when the underlying asset's price decreases. 
 
 ### Perp Example
-Let's say you have \$1,000. With a perp, you can control \$10,000 worth of BTC using just your \$1,000. This is called "10x leverage" because your trading power is multiplied by 10.
+Let's say you have \$1,000. With a perp, you can control \$10,000 worth of BTC using just your \$1,000. In other words, you have $10,000 of BTC exposure.This is called "10x leverage" because your trading power is multiplied by 10.
 
 Here's how it works:
 - If BTC's price rises from \$50,000 to \$55,000 (a 10% increase):

@@ -20,7 +20,7 @@ Un derivado común es un Contrato de Futuros perpetuals (o "perp" para abreviar)
 2. **Corta**: El operador obtiene ganancias cuando el precio del activo subyacente disminuye.
 
 ### Ejemplo de Perp
-Supongamos que tienes \$1,000. Con un perp, puedes controlar \$10,000 en BTC usando solo tus \$1,000. Esto se llama "apalancamiento 10x" porque tu poder de negociación se multiplica por 10.
+Supongamos que tienes \$1,000. Con un perp, puedes controlar \$10,000 en BTC usando solo tus \$1,000. En otras palabras, tienes una exposición de $10,000 en BTC. Esto se llama "apalancamiento 10x" porque tu poder de negociación se multiplica por 10.
 
 Así es como funciona:
 - Si el precio de BTC sube de \$50,000 a \$55,000 (un aumento del 10%):
