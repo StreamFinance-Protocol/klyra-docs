@@ -3,7 +3,7 @@ sidebar_position: 3
 description: ¿Como maneja el riesgo en Klyra?
 ---
 
-# Collateral
+# Colateral
 
 ## Introducción
 El colateral (o margen) es el capital que un trader deposita para respaldar sus posiciones en un intercambio perpetual. Asegura que los traders que incurrean en pérdidas tengan suficientes fondos para cubrir las ganancias de su contraparte. El colateral mantiene la integridad del sistema de trading al garantizar que ambas partes en una operación puedan cumplir con sus obligaciones, alineando el riesgo con el tamaño de la posición y evitando escenarios en los que las pérdidas de un trader superen sus fondos disponibles.
