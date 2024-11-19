@@ -8,28 +8,28 @@ description: ¿Qué son las tasas de financiamiento?
 ![funding payment diagram](../../../../../static/img/funding-diagram.png)
 
 ## Introductoria
-Las tasas de financiamiento ayudan a mantener el precio de un contrato perpetuo alineado con el precio del activo real que representa. Son pagos periódicos entre traders en posiciones largas y cortas, basados en la diferencia entre el precio del perpetuo y el precio del activo subyacente [reportado por el oráculo](./oracle.md).
+Las tasas de financiamiento ayudan a mantener el precio de un contrato perpetual alineado con el precio del activo real que representa. Son pagos periódicos entre traders en posiciones largas y cortas, basados en la diferencia entre el precio del perpetual y el precio del activo subyacente [reportado por el oráculo](./oracle.md).
 
 Cómo Funciona:
-- Si el precio del perpetuo está **por encima** del precio subyacente, los traders en largo pagan financiamiento a los traders en corto.
-- Si el precio del perpetuo está **por debajo** del precio subyacente, los traders en corto pagan financiamiento a los traders en largo.
+- Si el precio del perpetual está **por encima** del precio subyacente, los traders en largo pagan financiamiento a los traders en corto.
+- Si el precio del perpetual está **por debajo** del precio subyacente, los traders en corto pagan financiamiento a los traders en largo.
 
-La tasa de financiamiento por lo tanto crea incentivos para corregir el precio del perpetuo:
-- Si el precio del perpetuo está **por encima** del precio del activo subyacente, los cortos ganan financiamiento y los largos pagan financiamiento. Esto incentiva a los traders a:
+La tasa de financiamiento por lo tanto crea incentivos para corregir el precio del perpetual:
+- Si el precio del perpetual está **por encima** del precio del activo subyacente, los cortos ganan financiamiento y los largos pagan financiamiento. Esto incentiva a los traders a:
   1. Abrir posiciones cortas (bajando el precio)
   2. Cerrar posiciones largas (bajando el precio)
-  3. Obtener ganancias vendiendo perpetuos y comprando el activo hasta que los precios converjan (bajando aún más el precio)
-- Si el precio del perpetuo está **por debajo** del precio del activo subyacente, los largos ganan financiamiento y los cortos pagan financiamiento. Esto incentiva a los traders a:
+  3. Obtener ganancias vendiendo perpetuals y comprando el activo hasta que los precios converjan (bajando aún más el precio)
+- Si el precio del perpetual está **por debajo** del precio del activo subyacente, los largos ganan financiamiento y los cortos pagan financiamiento. Esto incentiva a los traders a:
   1. Abrir posiciones largas (subiendo el precio)
   2. Cerrar posiciones cortas (subiendo el precio)
-  3. Obtener ganancias comprando perpetuos y vendiendo el activo hasta que los precios converjan (subiendo aún más el precio)
+  3. Obtener ganancias comprando perpetuals y vendiendo el activo hasta que los precios converjan (subiendo aún más el precio)
 
 Este sistema se ajusta automáticamente según el tamaño de la diferencia de precios. En Klyra, los pagos de financiamiento ocurren cada hora para mantener la alineación.
 
 ## Avanzada
 ### Componentes y Cálculo de la Tasa de Financiamiento
 La tasa de financiamiento tiene dos componentes:
-1. Prima: Calculada separadamente para cada mercado basada en el precio de mercado del perpetuo
+1. Prima: Calculada separadamente para cada mercado basada en el precio de mercado del perpetual
 2. Tasa de interés
 
 En Klyra, cada validador calcula la prima para un mercado dado siguiendo estos pasos:
@@ -61,7 +61,7 @@ La fórmula de la prima se simplifica de la siguiente manera:
 `Si Precio de Impacto de Demanda < Precio Índice: Prima = Precio de Impacto de Demanda / Precio Índice - 1`
 
 ### Componente de Tasa de Interés
-El segundo componente de la tasa de financiamiento es la tasa de interés fija. Esta existe para apoyar las operaciones de carry trade (lea más sobre carry trades [aquí](https://www.investopedia.com/terms/c/cashandcarry.asp)), que son ejecutadas por traders sofisticados para ayudar a realinear el precio del perpetuo con el precio del activo subyacente. La tasa de interés se establece deliberadamente en un valor distinto de cero (típicamente entre 8-12%) para asegurar que estos carry trades sean rentables cuando los precios divergen, incentivando así a los traders a ayudar a mantener la alineación de precios.
+El segundo componente de la tasa de financiamiento es la tasa de interés fija. Esta existe para apoyar las operaciones de carry trade (lea más sobre carry trades [aquí](https://www.investopedia.com/terms/c/cashandcarry.asp)), que son ejecutadas por traders sofisticados para ayudar a realinear el precio del perpetual con el precio del activo subyacente. La tasa de interés se establece deliberadamente en un valor distinto de cero (típicamente entre 8-12%) para asegurar que estos carry trades sean rentables cuando los precios divergen, incentivando así a los traders a ayudar a mantener la alineación de precios.
 
 La tasa de interés se establece para cada mercado, de acuerdo con la siguiente fórmula:
 
