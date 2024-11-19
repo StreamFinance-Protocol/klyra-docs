@@ -64,7 +64,7 @@ Al liquidar la posición perp de una cuenta, se debe determinar un precio mínim
 
 - PNNV es el valor nocional neto de la posición
 
-- ABR (tasa de quiebra ajustada) es BA * (1 - (TNC / TMMR))
+- ABR (tasa de quiebra ajustada) es `BA * (1 - (TNC / TMMR))`
 
 - BA: ajuste de quiebra en partes por millón (este es un valor constante establecido en la configuración de la cadena que puede cambiarse mediante una votación de gobernanza)
 
@@ -81,7 +81,7 @@ Como se mencionó anteriormente, las liquidaciones se activan cuando `TNC = TMMR
 #### Precio de Quiebra
 `precio_quiebra = (-DNNV - (TNC * (abs(DMMR) / TMMR))) / PS`
 
-- DNNV (delta valor nocional neto de posición) es PNNVAD - PNNV
+- DNNV (delta valor nocional neto de posición) es `PNNVAD - PNNV`
 
 - PNNV es el valor nocional neto de la posición
 
@@ -91,7 +91,7 @@ Como se mencionó anteriormente, las liquidaciones se activan cuando `TNC = TMMR
 
 - TNC: colateral neto total
 
-- DMMR (delta requisito de margen de mantenimiento) = PMMRAD - PMMR donde PMMRAD es el requisito de margen de la posición después del delta.
+- DMMR (delta requisito de margen de mantenimiento) es `PMMRAD - PMMR` donde PMMRAD es el requisito de margen de la posición después del delta.
 
 - TMMR: requisito total de margen de mantenimiento de la posición abierta actual
 
