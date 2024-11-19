@@ -42,11 +42,11 @@ How It Works:
 - If the perp price is **above** the underlying price, long traders pay funding to short traders.
 - If the perp price is **below** the underlying price, short traders pay funding to long traders.
 
-This mechanism works because going long increases the perp price, while going short decreases it. For example:
-- If the perp is **overpriced**, shorting earns funding and longs pay funding. This incentivizes traders to:
+The funding rate therefore creates incentives to correct the perp price:
+- If the perp price is **higher** than the underlying asset's price, shorts earn funding and longs pay funding. This incentivizes traders to:
   1. Open short positions (driving the price down)
   2. Close long positions (further driving the price down)
-- If the perp is **underpriced**, longing earns funding and shorts pay funding. This incentivizes traders to:
+- If the perp price is **lower** than the underlying asset's price, longs earn funding and shorts pay funding. This incentivizes traders to:
   1. Open long positions (driving the price up)
   2. Close short positions (further driving the price up)
 
