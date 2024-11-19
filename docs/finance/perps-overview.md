@@ -6,7 +6,7 @@ description: What are Perpetual Futures?
 # Perpetuals Overview
 An overview on how Perpetual Future Contracts work in practice.
 
-## Beginner
+## Introductory
 Financial products can fundamentally be divided into two broad categories: spot products, and derivative products. 
 
 ### Spot Products

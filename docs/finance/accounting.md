@@ -5,7 +5,7 @@ description: How is Klyra's accounting done?
 
 # Accounting
 
-## Beginner
+## Introductory
 A core piece of Klyra’s infrastructure is keeping track of which accounts hold what positions. For Klyra’s initial financial primitive–perpetuals–an efficient accounting mechanism is used to track the net value of an account given all of its perpetual positions whether the trader is long or short or both across different perpetual markets.
 
 ## Advanced
