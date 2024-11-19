@@ -12,7 +12,7 @@ Los productos financieros se pueden dividir fundamentalmente en dos categorías 
 Los productos al contado tratan con el activo subyacente real: cuando posees un producto al contado, posees el activo en sí. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
 
 ### Productos Derivados
-Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de $100 en el precio de BTC, Bob le pagará a Alice $500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
+Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de \$100 en el precio de BTC, Bob le pagará a Alice \$500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
 
 Un derivado común es un Contrato de Futuros Perpetuos (o "perp" para abreviar). Los Perps permiten a los operadores usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un operador puede estar en una posición larga o corta:
 
@@ -20,12 +20,12 @@ Un derivado común es un Contrato de Futuros Perpetuos (o "perp" para abreviar).
 2. **Corta**: El operador obtiene ganancias cuando el precio del activo subyacente disminuye.
 
 ### Ejemplo de Perp
-Supongamos que tienes $1,000. Con un perp, puedes controlar $10,000 en BTC usando solo tus $1,000. Esto se llama "apalancamiento 10x" porque tu poder de negociación se multiplica por 10.
+Supongamos que tienes \$1,000. Con un perp, puedes controlar \$10,000 en BTC usando solo tus \$1,000. Esto se llama "apalancamiento 10x" porque tu poder de negociación se multiplica por 10.
 
 Así es como funciona:
-- Si el precio de BTC sube de $50,000 a $55,000 (un aumento del 10%):
-  - Con un perp: Tu posición de $10,000 gana $1,000 (10% de $10,000)
-  - Con spot: Tus $1,000 en BTC solo ganarían $100 (10% de $1,000)
+- Si el precio de BTC sube de \$50,000 a \$55,000 (un aumento del 10%):
+  - Con un perp: Tu posición de \$10,000 gana \$1,000 (10% de \$10,000)
+  - Con spot: Tus \$1,000 en BTC solo ganarían \$100 (10% de \$1,000)
 
 Esto muestra cómo los perps pueden multiplicar tanto las ganancias COMO las pérdidas según la cantidad de apalancamiento (10x en este ejemplo). Esto hace que los perps sean más arriesgados, pero potencialmente más rentables que comprar el activo directamente.
 
@@ -71,6 +71,6 @@ Alice y Bob abren un perp entre sí, con Alice en largo de BTC y Bob en corto de
 
 Sin embargo, esto crea una mala experiencia para Alice: ¿y si no quería cerrar su posición? Por esto, Klyra implementa liquidaciones, que transfieren la posición de Bob a un nuevo operador. En lugar de cerrar la posición de Alice, ella obtiene una nueva contraparte mientras solo Bob es obligado a salir (ya que no tiene más colateral para cubrir posibles pérdidas).
 
-Las liquidaciones aseguran la solvencia del intercambio al prevenir colateral negativo. Si un operador tuviera colateral negativo, su contraparte tendría ganancias que no podrían ser pagadas. Una clave de Klyra es que el PNL neto total debe ser cero (es decir, si alguien gana $X, otro operador debe perder $X). Para prevenir escenarios de colateral negativo, las liquidaciones ocurren justo antes de que el colateral de un operador llegue a cero, dando tiempo al intercambio para encontrar una nueva contraparte.
+Las liquidaciones aseguran la solvencia del intercambio al prevenir colateral negativo. Si un operador tuviera colateral negativo, su contraparte tendría ganancias que no podrían ser pagadas. Una clave de Klyra es que el PNL neto total debe ser cero (es decir, si alguien gana \$X, otro operador debe perder \$X). Para prevenir escenarios de colateral negativo, las liquidaciones ocurren justo antes de que el colateral de un operador llegue a cero, dando tiempo al intercambio para encontrar una nueva contraparte.
 
 Encuentra exactamente cómo funcionan las liquidaciones en Klyra [aquí](./liquidations.md).
