@@ -54,6 +54,6 @@ Now, unlike the Alice example, let’s assume the BTC price moves down 10% resul
 
 
 ### Subaccounts
-One detail abstracted away in the above examples is Klyra’s concept of subaccounts. On a chain level, a private/public key pair is associated with an account, but all accounts can have up to 127,000 subaccounts. The assets and perps are tracked on a per subaccount basis. The squares in the above examples actually represent a single subaccount of Alice and Bob respectively! 
+One detail abstracted away in the above examples is Klyra’s concept of subaccounts. On a chain level, a private/public key pair is associated with an account, but all accounts can have up to 128,000 subaccounts. The assets and perps are tracked on a per subaccount basis. The squares in the above examples actually represent a single subaccount of Alice and Bob respectively! 
 
 Subaccounts are useful to traders for many reasons with the main one being risk management. Because each subaccount has its own collateral and perp positions, risk can be evaluated on a per-subaccount basis. For example, say Alice has  a small and stable 3x BTC long in subaccount 1. Alice then becomes bullish on a longtail memecoin that she also wants to long. However she doesn’t want her memecoin long to affect the health of her BTC position if it doesn’t go well. Alice can transfer some collateral into subaccount 2 and open the memecoin long on subaccount 2. If the trade goes poorly, it’s possible her subaccount 2 gets liquidated, but her BTC long position remains unaffected. 
