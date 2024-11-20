@@ -26,7 +26,7 @@ La tasa de financiamiento por lo tanto crea incentivos para corregir el precio d
 
 Este sistema se ajusta automáticamente según el tamaño de la diferencia de precios. En Klyra, los pagos de financiamiento ocurren cada hora para mantener la alineación.
 
-## Avanzada
+## Avanzado
 ### Componentes y Cálculo de la Tasa de Financiamiento
 La tasa de financiamiento tiene dos componentes:
 1. Prima: Calculada separadamente para cada mercado basada en el precio de mercado del perpetual

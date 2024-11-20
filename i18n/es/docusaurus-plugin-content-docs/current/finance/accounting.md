@@ -8,7 +8,7 @@ description: ¿Cómo se realiza la contabilidad en Klyra?
 ## Introducción
 Una pieza central de la infraestructura de Klyra es llevar un registro de qué cuentas tienen qué posiciones. Para el primer producto financiero de Klyra, perpetuals, se utiliza un mecanismo de contabilidad eficiente que rastrea el valor neto de una cuenta considerando todas sus posiciones perpetuals, ya sea que el trader esté en largo, corto o ambas posiciones en diferentes mercados perpetuals.
 
-## Avanzada
+## Avanzado
 
 ### El Esquema (largo perpetual)
 La estructura de cuentas de Klyra se puede entender mejor como compuesta por dos secciones: activos y perpetuals.
@@ -33,7 +33,7 @@ Ahora, supongamos que el precio del BTC aumenta un 10%. Es decir, ahora 1 BTC = 
 
 ![Alice profit img](../../../../../static/img/alice-profit-dark.png)
 
-Observe cómo solo necesitamos realizar cambios en la estructura contable cuando Alice realiza una acción, como abrir o cerrar una posición.
+De esta manera, solo necesitamos realizar cambios en la estructura contable cuando Alice realiza una acción, como abrir o cerrar una posición.
 
 ### El Esquema (corto perpetual)
 Klyra utiliza una estructura contable similar para rastrear posiciones cortas, pero de manera inversa. Utilicemos el mismo ejemplo, pero esta vez con Bob, quien cree que el precio de BTC disminuirá. Por lo tanto, decide abrir una posición corta de BTC con un apalancamiento de 10x. Tiene un capital inicial de 1,000 DAI y 1 BTC = 10,000 DAI. Primero, como Alice, Bob necesita depositar sus DAI en Klyra.

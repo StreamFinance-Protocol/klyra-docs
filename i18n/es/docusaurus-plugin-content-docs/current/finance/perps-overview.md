@@ -7,13 +7,13 @@ description: ¿Qué son los contratos perpetuals?
 Una introducción a cómo funcionan los contratos perpetuals en la práctica.
 
 ## Introducción
-Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos al spot y productos derivados.
+Los productos financieros se pueden dividir fundamentalmente en dos categorías amplias: productos en spot y productos derivados.
 
-### Productos al Spot
-Los productos al spot tratan con el activo subyacente real: cuando posees un producto al spot, posees el activo en sí. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
+### Productos en Spot
+Los productos en spot tratan con el activo subyacente real: cuando posees un producto en spot, posees el activo en sí. Es decir, si se dice que alguien tiene 1 BTC en spot, eso significa que posee 1 BTC. El ejemplo más simple es un intercambio entre dos activos: si tengo BTC y quiero USDC, poseo el BTC real antes del intercambio y el USDC real después.
 
 ### Productos Derivados
-Los productos derivados son herramientas financieras que derivan su valor de un activo subyacente sin requerir su propiedad. Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de \$100 en el precio de BTC, Bob le pagará a Alice \$500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica poseer BTC.
+Los productos derivados son herramientas financieras que derivan su valor de otro activo (llamado activo subyacente). Cuando posees un producto derivado, no posees el activo subyacente. Los derivados se estructuran como un acuerdo mutuo entre dos partes. Por ejemplo, supongamos que Alice piensa que el precio de BTC aumentará y Bob piensa que caerá. Alice y Bob acuerdan que por cada aumento de \$100 en el precio de BTC, Bob le pagará a Alice \$500 (y viceversa si el precio cae). Este contrato deriva su valor del precio de BTC, pero no implica que las partes posean BTC.
 
 Un derivado común es un Contrato de Futuros Perpetuals (o "perp" para abreviar). Los perps permiten a los traders usar apalancamiento, lo que significa que pueden controlar una posición más grande de lo que su capital disponible normalmente permitiría. Al operar un perp, un trader puede estar en una posición larga o corta:
 
