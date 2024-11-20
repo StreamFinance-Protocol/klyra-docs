@@ -1,8 +1,8 @@
 {
-  "label": "Finance",
+  "label": "Finanzas",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Learn the financial concepts behind Klyra"
+    "description": "Aprende los conceptos financieros detrás de Klyra"
   }
 }
